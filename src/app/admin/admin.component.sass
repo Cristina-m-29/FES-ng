@@ -86,7 +86,7 @@
     width: 95%
     font-size: 1vw
 
-.edit-field
+.edit-field, .color-grid
     > label
         color: #cfc9ba
         line-height: 1vw
@@ -102,7 +102,7 @@
         color: #000000
         &:hover
             color: #cfc9ba
-            border-bottom: solid 0.2em rgba(17,203,219,0.8)
+            border-bottom: solid 0.2em rgba(17, 203, 219, 0.8)
         &:focus
             color: #cfc9ba
             border-bottom: solid 0.2em rgba(17,203,219,0.8)
@@ -145,3 +145,21 @@ label
 
 .image-selector
     font-size: 1vw
+
+:host
+    ::ng-deep
+        .color-grid
+            display: grid
+            grid-template-columns: 20% 76%
+            grid-gap: 1em
+            > p
+                color: #cfc9ba
+                font-weight: 400
+        .colorpick-eyedropper-input-trigger
+            display: none
+        .add-product-colors
+            > div
+                width: 2.3vw
+                height: 2.3vw
+                border-radius: 50%
+                margin-top: 0.2em

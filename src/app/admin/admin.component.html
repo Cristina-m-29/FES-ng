@@ -350,8 +350,7 @@
     <!-- Add product -->
     <div class="user-container add-grid mt-2" *ngIf="this.page === 'add-product'">
       <img class="mr-2" src="{{this.addProdImg}}">
-      <div class="d-flex flex-column ml-2">
-        <!-- <button mat-button class="cancel-btn add-btn">Add photo</button> -->
+      <div class="d-flex flex-column ml-2 add-product">
         <input type="file" class="cancel-btn add-btn m-0 p-0 image-selector" (change)="this.photoSelected($event, 'add')">
         <div class="edit-field">
           <label class="m-0">Designed for</label>
@@ -370,8 +369,15 @@
           <input type="text" placeholder="30.79" [(ngModel)]="productPrice">
         </div>
         <div class="edit-field">
-          <label class="m-0">Add colors in hex format</label>
-          <input type="text" placeholder="#000000" [(ngModel)]="productColors">
+          <label class="m-0">Add colors (click color to delete it)</label>
+          <div class="color-grid">
+            <input class="p-0 color-picker" (change)="addColorToInput($event, 'add')" type="color" value="#11cbdb">
+            <!-- <input type="text" placeholder="#000000" [(ngModel)]="productColors"> -->
+            <p  class="p-0 m-0" *ngIf="this.productColors.length === 0">No colors yet</p>
+            <div *ngIf="this.productColors.length !== 0" class="d-flex add-product-colors">
+              <div (click)="this.deleteColor(item.id, 'add')" class="mb-1 mr-1" *ngFor="let item of this.productColors" [ngStyle]="{'background-color': item.color}"></div>
+            </div>
+          </div>
         </div>
         <div class="edit-field">
           <label class="m-0">Add sizes</label>

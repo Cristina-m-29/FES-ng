@@ -161,10 +161,13 @@ label
   .mat-hint
     color: #BE42B7
 
-  .mat-icon-button
-    line-height: 2.5vw
-    width: 2.5vw
-    height: 2.5vw
+
+:host
+  ::ng-deep
+    .mat-icon-button
+      line-height: 2.5vw
+      width: 2.5vw
+      height: 2.5vw
 
 
 
@@ -223,45 +226,46 @@ label
   line-height: 2.5vw
 
 //Datepicker
-::ng-deep 
-  .mat-calendar-header
-    margin: 0 !important
+:host
+  ::ng-deep 
+    .mat-calendar-header
+      margin: 0 !important
+    
+    .mat-calendar-controls
+      margin: 0 !important
   
-  .mat-calendar-controls
-    margin: 0 !important
- 
-  .mat-calendar
-    margin-top: 1.2em
-    max-width: 200px !important
-    max-height: 250px !important
+    .mat-calendar
+      margin-top: 1.2em
+      max-width: 200px !important
+      max-height: 250px !important
 
-  .mat-button
-    padding: 0 0.5em
-    font-family: 'Poppins', sans-serif
+    .mat-button
+      padding: 0 0.5em
+      font-family: 'Poppins', sans-serif
 
-  .mat-calendar-table
-    font-family: 'Poppins', sans-serif
+    .mat-calendar-table
+      font-family: 'Poppins', sans-serif
 
-  .mat-calendar-next-button
-    margin: 0.5em 0 0 0 !important
+    .mat-calendar-next-button
+      margin: 0.5em 0 0 0 !important
 
-  .mat-calendar-next-button::after
-    width: 1vw
-    height: 1vw
-    position: absolute
-    padding: 0 !important
-    margin: 0 !important
-    top: 30% !important
-    left: 30% !important
+    .mat-calendar-next-button::after
+      width: 1vw
+      height: 1vw
+      position: absolute
+      padding: 0 !important
+      margin: 0 !important
+      top: 30% !important
+      left: 30% !important
 
-  .mat-calendar-previous-button
-    margin: 0.5em 0 0 0 !important
+    .mat-calendar-previous-button
+      margin: 0.5em 0 0 0 !important
 
-  .mat-calendar-previous-button::after
-    width: 1vw
-    height: 1vw
-    position: absolute
-    padding: 0 !important
-    margin: 0 !important
-    top: 30% !important
-    left: 30% !important
+    .mat-calendar-previous-button::after
+      width: 1vw
+      height: 1vw
+      position: absolute
+      padding: 0 !important
+      margin: 0 !important
+      top: 30% !important
+      left: 30% !important

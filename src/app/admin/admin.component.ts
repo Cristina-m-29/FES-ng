@@ -64,7 +64,7 @@ export class AdminComponent implements OnInit {
   productName: string;
   productPrice: number;
   productSizes: string;
-  productColors: string;
+  productColors = [];
   addProdImg: any = '../../assets/images/girl.jpg';
   editProdImg: any =  '../../assets/images/girl.jpg';
 
@@ -125,19 +125,34 @@ export class AdminComponent implements OnInit {
     this.newSizes = [];
   }
 
-  deleteColor(colorId: number): any{
-    const colors = this.beforeProduct.hex_colors;
-    // tslint:disable-next-line: prefer-for-of
-    for ( let i = 0; i < colors.length; i++){
-      if (colors[i].id !== colorId){
-        this.newColors.push({
-          id: colors[i].id,
-          color: colors[i].color
-        });
+  deleteColor(colorId: number, env: string): any{
+    if (env === 'add'){
+      const colors = this.productColors;
+      this.productColors = [];
+      // tslint:disable-next-line: prefer-for-of
+      for ( let i = 0; i < colors.length; i++){
+        if (colors[i].id !== colorId){
+          this.productColors.push({
+            id: colors[i].id,
+            color: colors[i].color
+          });
+        }
       }
     }
-    this.beforeProduct.hex_colors = this.newColors;
-    this.newColors = [];
+    else{
+      const colors = this.beforeProduct.hex_colors;
+      // tslint:disable-next-line: prefer-for-of
+      for ( let i = 0; i < colors.length; i++){
+        if (colors[i].id !== colorId){
+          this.newColors.push({
+            id: colors[i].id,
+            color: colors[i].color
+          });
+        }
+      }
+      this.beforeProduct.hex_colors = this.newColors;
+      this.newColors = [];
+    }
   }
 
   deleteProduct(id: number): any{
@@ -176,7 +191,7 @@ export class AdminComponent implements OnInit {
     this.productEditId = -1;
   }
 
-  photoSelected(evt: any, env: any): any{
+  photoSelected(evt: any, env: string): any{
     const file = evt.target.files[0];
     if (file){
       if (/(jpe?g|png|gf)$/i.test(file.type)){
@@ -199,6 +214,13 @@ export class AdminComponent implements OnInit {
     else{
       console.log('No file found');
     }
+  }
+
+  addColorToInput(evt: any, env: string): any{
+    this.productColors.push({
+      id: this.productColors.length,
+      color: evt.target.value
+    });
   }
 
 }

@@ -39,14 +39,15 @@ img
 .cart-tags
     color: #BE42B7
 
-::ng-deep 
-    .mat-button
-        border-radius: 0
-        max-width: 65%
-        font-size: 1vw
-        line-height: 1.25vw
-        height: 2vw
-        font-weight: 400
+:host 
+    ::ng-deep 
+        .mat-button
+            border-radius: 0
+            max-width: 65%
+            font-size: 1vw
+            line-height: 1.25vw
+            height: 2vw
+            font-weight: 400
 
 .delete-btn
     font-size: 1vw
@@ -62,10 +63,6 @@ img
     background-color: rgb(203, 68, 169, 0.4) !important
     &:hover
         background-color: rgb(203, 68, 169, 0.6) !important
-        
-::ng-deep
-    .mat-button
-        padding: 0
 
 // Place order
 .order
