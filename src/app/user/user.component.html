@@ -1,0 +1,331 @@
+<div class="user-container user position-relative">
+  <!-- Side navigation for user -->
+  <div class="side-nav border-right pt-2 pb-0">
+    <div class="d-flex justify-content-between border-bottom pb-3">
+      <p class="welcome-text mt-2 pl-2">Welcome!</p>
+      <p class="logout-btn mt-2 mr-3" (click)="logout()">{{'log out' | uppercase}}</p>
+    </div>
+    <div class="d-flex flex-column mt-4">
+      <p class="border-bottom accent-text pb-2 welcome-text pl-2 m-0">My account</p>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/user/personal-data']">
+        <div class="d-flex" *ngIf="this.page !== 'personal-data'">
+          <img src="../../assets/icons/user-light.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Personal data</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'personal-data'">
+          <img src="../../assets/icons/user-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Personal data</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/user/orders']">
+        <div class="d-flex" *ngIf="this.page !== 'orders'">
+          <img src="../../assets/icons/box-light.png" alt="order icon">
+          <p class="p-0 m-0 ml-2 user-side-text">My orders</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'orders'">
+          <img src="../../assets/icons/box-blue.png" alt="order icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">My orders</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/user/addresses']">
+        <div class="d-flex" *ngIf="this.page !== 'addresses'">
+          <img src="../../assets/icons/address-light.png" class="" alt="address icon">
+          <p class="p-0 m-0 ml-2 user-side-text">My addresses</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'addresses'">
+          <img src="../../assets/icons/address-blue.png" alt="address icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">My addresses</p>
+        </div>
+      </div>
+      <div class="side-nav-option p-2" [routerLink]="['/atara/user/payment']">
+        <div class="d-flex" *ngIf="this.page !== 'payment'">
+          <img src="../../assets/icons/pay-light.png" alt="card icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Payment information</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'payment'">
+          <img src="../../assets/icons/pay-blue.png" alt="card icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Payment information</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Main -->
+  <div>
+    <!-- Personal data -->
+    <div class="user-container" *ngIf="this.page === 'personal-data'">
+      <p class="welcome-text">My Personal Data</p>
+      <!-- Personal data no email and password-->
+      <div>
+        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+          <p class="user-text p-0 m-0">My profile</p>
+          <button mat-button class="user-btn" *ngIf="!this.personalData" (click)="personalData = true">
+            <div class="d-flex">
+              <img class="small-img" src="../../assets/icons/pen.png">
+              <p class="p-0 m-0 user-text">Edit</p>
+            </div>
+          </button>
+        </div>
+        <div *ngIf="!this.personalData" class="personal-data-main p-2 pl-4 border-left border-bottom border-right">
+          <div>
+            <p>First Name</p>
+            <p>Last Name</p>
+            <p>Account type</p>
+            <p>Gender</p>
+            <p>Bithday</p>
+          </div>
+          <div>
+            <p>Mititelu</p>
+            <p>Cristina</p>
+            <p>User/Individual</p>
+            <p>Female</p>
+            <p>29/02/2000</p>
+          </div>
+        </div>
+        <div *ngIf="this.personalData" class="personal-data-edit p-2 pl-4 border-left border-bottom border-right">
+          <form class="editForm" #personalDataForm="ngForm" (ngSubmit)="editPersonalData(personalDataForm)">
+            <div class="edit-container">
+              <div class="f-flex flex-column mr-4">
+                <p class="m-0 p-0 form-label">First name</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="firstName" [(ngModel)]="firstName" required>
+                </mat-form-field>
+              </div>
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Last name</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="lastName" [(ngModel)]="lastName" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container">
+              <div class="d-flex flex-column">
+                <p class="m-0 p-0 form-label mb-2">Gender</p>
+                <div class="d-flex">
+                  <div class="radio-container mr-3 d-flex" *ngFor="let gender of genders" (click)="selectedGender = gender">
+                    <div *ngIf="this.selectedGender !== gender" class="radio-check p-0 m-0 mr-2"></div>
+                    <div *ngIf="this.selectedGender === gender" class="checkmark p-0 m-0 mr-2">
+                      <div class="inner-check p-0 m-0"></div>
+                    </div>
+                    {{gender | titlecase}}
+                  </div>
+                </div>
+              </div>  
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Bithday</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="birthday" [(ngModel)]="birthday" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container mt-1">
+              <button mat-button class="cancel-btn" (click)="personalData = false">Cancel</button>
+              <button mat-button class="submit-btn" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Email and password -->
+      <div class="mt-3 mb-3">
+        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+          <p class="user-text p-0 m-0">Email and password</p>
+          <div class="d-flex" *ngIf="!this.emailAndPassword">
+            <button mat-button class="user-btn" *ngIf="hide" (click)="hide = !hide">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pass-show.png">
+                <p class="p-0 m-0 user-text">Show</p>
+              </div>
+            </button>
+            <button mat-button class="user-btn" *ngIf="!hide" (click)="hide = !hide">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pass-hide.png">
+                <p class="p-0 m-0 user-text">Hide</p>
+              </div>
+            </button>
+            <button mat-button class="user-btn text-center ml-2" (click)="emailAndPassword = true">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pen.png">
+                <p class="p-0 m-0 user-text">Edit</p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-2 pl-4 border-left border-bottom border-right">
+          <p>mititelucristina@mail.com</p>
+          <div class="password d-flex justify-content-between">
+            <p *ngIf="!hide" class="p-0 m-0">parola</p>
+            <p *ngIf="hide"class="p-0 m-0">*********</p>
+          </div>
+        </div>
+        <div *ngIf="this.emailAndPassword" class="p-2 pl-4 border-left border-bottom border-right">
+          <form class="editForm" #emailAndPassForm="ngForm" (ngSubmit)="editEmailAndPassword(emailAndPassForm)">
+            <div class="edit-container">
+              <div class="f-flex flex-column mr-4">
+                <p class="m-0 p-0 form-label">Email</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="email" [(ngModel)]="email" required>
+                </mat-form-field>
+              </div>
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Password</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="password" [(ngModel)]="password" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container">
+              <button mat-button class="cancel-btn" (click)="this.emailAndPassword = false">Cancel</button>
+              <button mat-button type="submit" class="submit-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Orders -->
+    <div class="user-container" *ngIf="this.page === 'orders'">
+      <p class="welcome-text pb-2 mb-0">My orders</p>
+      <p class="p-0 m-0" *ngIf="this.nrOrders === 0">No orders found</p>
+      <div *ngIf="this.nrOrders !== 0">
+        <div *ngFor="let order of orders" class="user-order mb-3">
+          <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+            <p class="user-text p-0 m-0">Order nr. {{order.number}}</p>
+          </div>
+          <div class="orders-main p-2 pl-4 border-left border-bottom border-right">
+            <div>
+              <p>Submision date</p>
+              <p>Total price</p>
+              <p>Order summary</p>
+            </div>
+            <div>
+              <p>{{order.date}}</p>
+              <p>{{order.price}} RON</p>
+              <div class="order-summary">
+                <div class="mb-1">
+                  <p class="border-bottom p-0 m-0 mr-2">Product name</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Size</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Color</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Pieces</p>
+                  <p class="border-bottom p-0 m-0 mr-3">Price</p>
+                </div>
+                <div class="order-products" *ngFor="let prod of order.products">
+                  <p class="p-0 m-0 mr-2">{{prod.name}}</p>
+                  <p class="p-0 m-0 mr-2">{{prod.size}}, M, L</p>
+                  <p class="p-0 m-0 mr-2">{{prod.color}}</p>
+                  <p class="p-0 m-0 mr-2">{{prod.pieces}}</p>
+                  <p class="p-0 m-0">{{prod.price}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Addresses -->
+    <div class="user-container" *ngIf="this.page === 'addresses'">
+      <p class="welcome-text pb-2 mb-0">My addresses</p>
+      <p class="p-0 m-0" *ngIf="this.nrAddresses === 0">No addresses found</p>
+      <div *ngIf="this.nrAddresses !== 0">
+        <div *ngFor="let adr of addresses" class="user-order mb-3">
+          <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+            <p class="user-text p-0 m-0">Address nr. {{adr.number}}</p>
+            <button mat-button class="user-btn" *ngIf="adr.edit === 'false'" (click)="adr.edit = 'true'">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pen.png">
+                <p class="p-0 m-0 user-text">Edit</p>
+              </div>
+            </button>
+          </div>
+          <div *ngIf="adr.edit === 'false'" class="addresses-main p-2 pl-4 border-left border-bottom border-right">
+            <div>
+              <p>Name</p>
+              <p>Street</p>
+              <p>City</p>
+              <p>Country</p>
+              <p>Postal code</p>
+            </div>
+            <div>
+              <p>{{adr.name}}</p>
+              <p>{{adr.street}} nr. {{adr.strNumber}}</p>
+              <p>{{adr.city}}</p>
+              <p>{{adr.country}}</p>
+              <p>{{adr.postalCode}}</p>
+            </div>
+          </div>
+          <div *ngIf="adr.edit === 'true'" class="p-2 pl-4 border-left border-bottom border-right">
+            <form class="editForm">
+              <div class="edit-container">
+                <div class="f-flex flex-column mr-4">
+                  <p class="m-0 p-0 form-label">Name</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.name" [(ngModel)]="adr.name" required>
+                  </mat-form-field>
+                </div>
+                <div class="f-flex flex-column">
+                  <p class="m-0 p-0 form-label">Street</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.street" [(ngModel)]="adr.street" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="edit-container">
+                <div class="f-flex flex-column mr-4">
+                  <p class="m-0 p-0 form-label">Number</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.strNumber" [(ngModel)]="adr.strNumber" required>
+                  </mat-form-field>
+                </div>
+                <div class="f-flex flex-column">
+                  <p class="m-0 p-0 form-label">City</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.city" [(ngModel)]="adr.city" required>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="edit-container">
+                <div class="f-flex flex-column mr-4">
+                  <p class="m-0 p-0 form-label">Country</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.country" [(ngModel)]="adr.country" required>
+                  </mat-form-field>
+                </div>
+                <div class="f-flex flex-column">
+                  <p class="m-0 p-0 form-label">Street</p>
+                  <mat-form-field appearance="fill" class="input-ng">
+                    <input matInput name="adr.postalCode" [(ngModel)]="adr.postalCode" required>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+            <div class="edit-container">
+              <button mat-button (click)="adr.edit = 'false'" class="cancel-btn">Cancel</button>
+              <button mat-button (click)="adr.edit = 'false'" class="submit-btn" (click)="editAddress()">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Payment methods -->
+    <div class="user-container" *ngIf="this.page === 'payment'">
+      <p class="welcome-text pb-2 mb-0">My cards</p>
+      <p class="p-0 m-0" *ngIf="this.nrCards === 0">No cards found</p>
+        <div *ngIf="this.nrAddresses !== 0">
+          <div *ngFor="let card of cards" class="user-order mb-3">
+            <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+              <p class="user-text p-0 m-0">Card nr. {{card.number}}</p>
+            </div>
+            <div class="cards-main p-2 pl-4 border-left border-bottom border-right">
+              <div>
+                <p>Type</p>
+                <p>Card number</p>
+                <p>Expiration date</p>
+              </div>
+              <div>
+                <p>{{card.type | titlecase}}</p>
+                <p>{{card.cardNumber}}</p>
+                <p>{{card.month}}/{{card.year}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

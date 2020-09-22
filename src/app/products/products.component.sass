@@ -1,0 +1,191 @@
+@import 'radio-buttons'
+@import 'paginator'
+    
+$rowNum: 3
+$textColor: #f5f5f5
+    
+.header
+    position: relative
+    height: 100vh
+    text-align: center
+    
+#header-text
+    color: $textColor
+    font-weight: 600
+    font-size: 7vw
+    line-height: 8vw
+    letter-spacing: 0.1em
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.main-products
+    height: 100vh
+    display: grid
+    grid-template-columns: 17% 83%
+
+// .side-products
+//     position: fixed
+.side-products-text, .category-name, .product-type, .type-text
+    color: $textColor
+    font-size: 1vw
+    font-family: 'Poppins', sans-serif
+    font-weight: 500
+    letter-spacing: 0.05em
+
+.side-products-text
+    text-transform: uppercase
+    font-weight: 600
+    letter-spacing: 0.1em
+    margin-bottom: 0.5em
+
+.type-text
+    font-weight: 600
+    font-size: 1.5vw
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.center-products-text
+    text-transform: uppercase
+    font-weight: 700
+    font-size: 1vw
+    font-family: 'Poppins', sans-serif
+    letter-spacing: 0.05em
+    color: rgb(33, 37, 41, 1)
+    
+.types-list
+    display: grid
+    grid-template-columns: repeat($rowNum, auto)
+    grid-gap: 2em
+    
+.products-list
+    display: grid
+    grid-template-columns: repeat($rowNum, auto)
+    grid-gap: 2em
+
+.category-name
+    height: 1.5vw !important
+
+.price-select, .size-select 
+    width: 70%
+
+.sort-select
+    width: 10vw
+
+.type
+    cursor: pointer
+    height: 60vh
+
+.product
+    cursor: pointer
+    height: 70vh
+    display: grid
+    grid-template-rows: 83% 17%
+
+.type-border
+    position: relative
+    height: 100%
+    border: solid 0.2em $textColor
+
+.product-border
+    position: relative
+    border: solid 0.2em $textColor
+
+.product-img
+    border: solid 0.1em $textColor
+    object-fit: cover
+
+.product-overlay
+    background-color: $textColor
+    font-size: 1vw
+    line-height: 5vw
+    font-weight: 500
+    width: 80%
+    height: 5vw
+    position: absolute
+    top: 85%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.product-main-overlay
+    display: grid
+    grid-template-columns: 50% 50%
+
+.product-color-overlay
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.color-circle
+    width: 2vw
+    height: 2vw
+
+.left-arrow
+    width: 1.5vw
+    height: 1.5vw
+    position: absolute
+    top: 50%
+    left: 5%
+    transform: translate(-50%, -50%)
+
+.right-arrow
+    width: 1.5vw
+    height: 1.5vw
+    position: absolute
+    top: 50%
+    left: 95%
+    transform: translate(-50%, -50%)
+
+.product-details
+    font-size: 1vw
+    font-weight: 500
+    font-family: 'Poppins', sans-serif
+    line-height: 1.2vw
+    color: $textColor
+
+.product-name
+    font-size: 1.3vw
+    line-height: 1.8vw
+    padding-bottom: 0.1em
+
+::ng-deep 
+    .mat-form-field
+        font-size: 1vw
+        line-height: 1.5vw
+        font-family: 'Poppins', sans-serif
+
+    .mat-select-arrow-wrapper
+        padding-top: 0
+        padding-bottom: 0.6vw
+        transform: none !important
+
+    .mat-form-field-appearance-fill
+        transform: none !important
+
+    .mat-form-field-infix
+        padding: 0 !important
+        border-top: none 
+
+    .mat-select-panel
+        background-color: rgb(33, 37, 41, 1)
+        font-size: 1vw !important
+        line-height: 1.5vw !important
+
+    .mat-select-placeholder 
+        font-family: 'Poppins', sans-serif
+
+    .mat-option
+        background: rgb(33, 37, 41, 0.3)
+        padding: 0 
+        font-family: 'Poppins', sans-serif
+        color: $textColor
+        font-size: 1vw
+
+    .mat-option.mat-active
+        color: $textColor
+        font-size: 1vw
+        background: rgb(33, 37, 41, 0.2)

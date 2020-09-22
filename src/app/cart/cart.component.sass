@@ -1,0 +1,203 @@
+.cart-container
+    width: 90%
+    margin: auto
+
+// Cart products    
+.cart
+    margin-top: 4.5vw
+    padding-bottom: 3vw
+    display: grid
+    grid-template-columns: 33.3% 33.3% 33.3%
+    font-family: 'Poppins', sans-serif
+    font-size: 1.25vw
+    font-weight: 500
+    color: #f5f5f5
+
+img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    border: solid 0.1em #f5f5f5
+
+.cart-product
+    display: grid
+    grid-template-columns: 35% 75%
+
+.cart-border
+    width: 100%
+    height: 100%
+    border: solid 0.1em #f5f5f5
+
+.cart-name
+    letter-spacing: 0.05em
+
+.cart-details
+    display: grid
+    grid-template-columns: 50% 50%
+    font-size: 0.9vw
+
+.cart-tags
+    color: #BE42B7
+
+::ng-deep 
+    .mat-button
+        border-radius: 0
+        max-width: 65%
+        font-size: 1vw
+        line-height: 1.25vw
+        height: 2vw
+        font-weight: 400
+
+.delete-btn
+    font-size: 1vw
+    font-weight: 400
+    color: #f5f5f5
+    background-color: rgb(0, 0, 0, 0.4) !important
+    &:hover
+        background-color: rgb(0, 0, 0, 0.6) !important
+
+.cart-cart-btn
+    font-size: 1vw
+    font-weight: 400
+    background-color: rgb(203, 68, 169, 0.4) !important
+    &:hover
+        background-color: rgb(203, 68, 169, 0.6) !important
+        
+::ng-deep
+    .mat-button
+        padding: 0
+
+// Place order
+.order
+    display: grid
+    grid-template-columns: 50% 50%
+    color: #f5f5f5
+    font-size: 1.25vw
+    letter-spacing: 0.1em
+
+.order > div
+    width: 100%
+
+::ng-deep .btn
+    font-size: 1.1vw 
+    font-family: 'Poppins', sans-serif
+    font-weight: 500
+    line-height: 3vw
+    height: 3vw
+    width: 100%
+
+.add-address-btn
+    background-color: rgb(203, 68, 169, 0.4)
+    &:hover
+        background-color: rgb(203, 68, 169, 0.8)
+
+.order-btn
+    position: absolute
+    bottom: 0
+    background-color: rgba(17,203,219,0.4)
+    &:hover
+        background-color: rgba(17,203,219,0.8)
+
+// Add new address form
+.address-container
+    width: 90%
+    margin: auto
+    font-size: 1.1vw 
+    font-family: 'Poppins', sans-serif
+    font-weight: 500
+    color: #f5f5f5
+    > p
+        font-weight: 600
+        font-size: 1.25vw
+        letter-spacing: 0.1em
+
+.address-form-group, .address-btns
+    display: grid
+    grid-template-columns: 50% 50%
+
+.form-input
+    padding-bottom: 1em
+    display: grid
+    grid-template-columns: 20% 80%
+
+.cancel-btn
+    width: 100%
+    background-color: rgb(0, 0, 0, 0.4)
+    &:hover
+        background-color: rgb(0, 0, 0, 0.6)
+
+.address-btn
+    margin: auto
+    width: 100%
+    background-color: rgba(17,203,219,0.4)
+    &:hover
+        background-color: rgba(17,203,219,0.8)
+
+// Add new card to user
+.form-input-card
+    display: grid
+    grid-template-columns: 25% 75%
+
+.address-form-group
+    > span, div
+        font-size: 1.25vw
+        font-weight: 600
+
+.cart-btn
+    width: 100%
+    background-color: rgba(17,203,219,0.4)
+
+.address-form-group, .order
+    ::ng-deep
+        .mat-button
+            max-width: 100%
+            border: none
+            display: inline-block
+            text-decoration: none
+            color: #f5f5f5
+            font-family: 'Poppins', sans-serif
+            font-size: 1.25vw
+            line-height: 1.5vw
+            height: 3vw
+            font-weight: 500
+            cursor: pointer 
+
+           
+
+// Form inputs
+.address-container
+    ::ng-deep 
+        .mat-form-field-subscript-wrapper
+            font-size: 70%
+            margin-top: 0
+            padding-left: 0
+            font-family: 'Poppins', sans-serif
+            font-weight: 500
+            letter-spacing: 0.1em
+
+        .mat-form-field
+            line-height: 1.5vw
+            align-items: middle
+
+        .mat-error, .mat-hint
+            color: #11cbdb
+
+        .mat-form-field-ripple
+            background-color: rgb(17, 203, 219,0.5)
+
+        .mat-icon-button
+            line-height: 2.5vw
+            width: 2.5vw
+            height: 2.5vw
+
+        .mat-form-field-infix
+            padding: 0.5em 0.5em
+            border-top: none
+        
+        .mat-input-element
+            color: #737373
+            font-family: 'Poppins', sans-serif
+            font-weight: 500
+            font-size: 1vw
+            line-height: 2vw
+            vertical-align: middle

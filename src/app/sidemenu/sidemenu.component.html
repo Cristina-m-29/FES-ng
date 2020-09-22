@@ -1,0 +1,28 @@
+<div class="sidemenu" [ngStyle]="{'height': height, 'width':width, 'transition': transition}"> 
+  <div class="side" [ngStyle]="{'height': height, 'display': display}">
+    <div class="categories-list transparentize">
+      <ul  class="p-0 m-0 mt-4">
+        <li class="menu_category pt-2 pb-2" [routerLink]="['/atara/products']" [queryParams]="{category: 'most bought'}">Most bought</li>
+        <li class="menu_category pt-2 pb-2" [routerLink]="['/atara/products']" [queryParams]="{category: 'most viewed'}">Most viewed</li>
+        <li (click)="changeMenu('women')" class="menu_category pt-2 pb-2">Women</li>
+        <li *ngIf="this.menu === 'women'" class="m-0">
+          <div class="category-grid">   
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'women'}">All</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'women', type: 'dresses'}">Dresses</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'women', type: 't-shirts'}">T-shirts</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'women', type: 'jeans'}">Jeans</p>
+          </div>        
+        </li>
+        <li (click)="changeMenu('men')" class="menu_category pt-2 pb-2">Men</li>
+        <li *ngIf="this.menu === 'men'" class="m-0">
+          <div class="category-grid">
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'men'}">All</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'men', type: 'jackets'}">Jackets</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'men', type: 't-shirts'}">T-shirts</p>
+            <p [routerLink]="['/atara/products']" [queryParams]="{category: 'men', type: 'jeans'}">Jeans</p>
+          </div> 
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

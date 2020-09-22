@@ -1,0 +1,107 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+$pink-ng: (
+    50 : #f7e8f6,
+    100 : #ecc6e9,
+    200 : #dfa1db,
+    300 : #d27bcd,
+    400 : #c85ec2,
+    500 : #be42b7,
+    600 : #b83cb0,
+    700 : #af33a7,
+    800 : #a72b9f,
+    900 : #991d90,
+    A100 : #ffd3fb,
+    A200 : #ffa0f7,
+    A400 : #ff6df3,
+    A700 : #ff53f1,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$blue-ng: (
+    50 : #e1f6f8,
+    100 : #b5e7ef,
+    200 : #84d8e4,
+    300 : #53c8d9,
+    400 : #2ebcd0,
+    500 : #09b0c8,
+    600 : #08a9c2,
+    700 : #06a0bb,
+    800 : #0597b4,
+    900 : #0287a7,
+    A100 : #d1f5ff,
+    A200 : #9ee9ff,
+    A400 : #6bdeff,
+    A700 : #52d8ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$FES-ng-primary: mat-palette($mat-red);
+$FES-ng-accent: mat-palette($mat-pink, A200, A100, A400);
+$Base-color: #f5f5f5;
+$PinkBase: mat-palette($pink-ng, 400);
+$BlueBase: mat-palette($blue-ng, 400);
+
+// The warn palette is optional (defaults to red).
+$FES-ng-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$FES-ng-theme: mat-light-theme((
+  color: (
+    primary: $PinkBase,
+    accent: $BlueBase,
+    warn: $FES-ng-warn,
+    base: $Base-color
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($FES-ng-theme);
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

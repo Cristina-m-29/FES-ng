@@ -1,0 +1,53 @@
+$back-color: #f5f5f5
+$second-back-color: #f1f0f0
+    
+.sidemenu
+    z-index: 3
+    width: 100vh
+    height: 0
+    position: fixed
+    background-color: rgba(15, 15, 15, 0.3)
+    
+.side
+    display: none
+    z-index: 3
+    height: 0
+    width: 50%
+
+ul
+    text-align: center
+    list-style-type: none
+    font-family: "Poppins", sans-serif
+    font-weight: 600
+    color: #f5f5f5
+    letter-spacing: 0.1em
+    cursor: pointer
+
+ul > li 
+    margin: 0.2em 0
+    font-size: 20px
+    align-items: center
+    position: relative
+    &:hover
+        background-color: rgba(15, 14, 14, 0.3)
+
+.categories-list
+    width: 100%
+    // z-index: 3
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+
+.category-grid
+    padding: 0.5em
+    width: 50%
+    margin: auto
+    overflow: hidden
+    display: grid
+    grid-gap: 0.5em
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))
+    >p
+        font-size: 20px
+        margin: 0
+        padding: 0.2em 0

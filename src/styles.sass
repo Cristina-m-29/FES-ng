@@ -1,1 +1,145 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap')
+$LightPink: rgba(113, 34, 79, 0.4)
+$LightBlue: rgba(17, 203, 219, 0.2)
+$ExtraSmall: 100px
+$Small: 150px
+$Medium: 250px
+$Large: 300px
+
+.main-container
+    width: 90%
+    margin: auto
+    height: 100vh
+    padding: 0
+    position: relative
+
+.logo
+    letter-spacing: 0.2em
+    font-size: 1.5vw
+    // font-size: 16px
+    padding: 0
+    padding-top: 0.1em
+    text-decoration: none
+    color: #f5f5f5
+    text-transform: uppercase
+    text-decoration: none
+    cursor: pointer
+    box-shadow: none
+
+p
+    padding: 0
+    margin: 0
+    font-family: 'Poppins', sans-serif
+    font-weight: 600
+
+a
+    text-decoration: none
+
+.over
+    overflow-y: hidden
+
+.full-over
+    overflow: hidden
+
+.circle
+    position: absolute
+    transform: translate(-50%, -50%)
+    border-radius: 50%
+    z-index: -1
+    overflow: hidden
+
+.circle-1
+    background-color: $LightPink
+    width: $Medium
+    height: $Medium
+    top: 0%
+    left: 65%
+
+.circle-2
+    background-color: $LightPink
+    width: $Small
+    height: $Small
+    top: 35%
+    left: 10%
+
+.circle-3
+    background-color: $LightBlue
+    width: $Large
+    height: $Large
+    bottom: -50%
+    right: -20%
+
+.circle-4
+    background-color: $LightPink
+    width: $Small
+    height: $Small
+    top: 20%
+    left: 60%
+
+.circle-5
+    background-color: $LightBlue
+    width: $ExtraSmall
+    height: $ExtraSmall
+    top: 85%
+    left: 70%
+
+.circle-6
+    background-color: $LightPink
+    width: $Small
+    height: $Small
+    top: 65%
+    left: 85%
+
+.circle-7
+    background-color: $LightBlue
+    width: $ExtraSmall
+    height: $ExtraSmall
+    top: 75%
+    left: 15%
+
+.circle-8
+    background-color: rgba(113, 34, 79, 0.3)
+    width: $Large
+    height: $Large
+    top: 30%
+    left: 23%
+
+// Radio buttons
+.radio-container
+  display: block
+  position: relative
+  cursor: pointer
+  font-size: 1vw
+  line-height: 1.5vw
+  font-family: 'Poppins', sans-serif
+  font-weight: 500
+  color: #f5f5f5
+
+.radio-check
+  position: relative
+  height: 1.5vw
+  width: 1.5vw
+  background-color: rgb(33, 37, 41, 0.4)
+  border-radius: 50%
+  &:hover
+    background-color: rgb(33, 37, 41, 0.6)
+
+.checkmark 
+  position: relative
+  height: 1.5vw
+  width: 1.5vw
+  display: block
+  background-color: rgb(33, 37, 41, 0.5)
+  border-radius: 50%
+
+.inner-check
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 1vw
+    height: 1vw
+    border-radius: 100%
+    background:  rgba(17, 203, 219, 0.8) 

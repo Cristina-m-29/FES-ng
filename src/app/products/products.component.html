@@ -1,0 +1,132 @@
+<div class="products">
+  <!-- Header -->
+  <div class="header p-0 m-0">
+    <img *ngIf="this.category === 'women'" src="..\..\assets\images\women.png" alt='this.category'>
+    <img *ngIf="this.category === 'men'" src="..\..\assets\images\men.jpg" alt='this.category'>
+    <img *ngIf="this.category === 'most bought'" src="..\..\assets\images\most_bought.jpg" alt='this.category'>
+    <img *ngIf="this.category === 'most viewed'" src="..\..\assets\images\most_viewed.jpg" alt='this.category'>
+    <p id="header-text">{{this.category | uppercase}}</p>
+  </div>
+  <!-- Main container -->
+  <div class="main-products main-container mt-3 pt-5">
+    <!-- Side menu -->
+    <div class="side-products">
+      <p class="side-products-text">Categories</p>
+      <div class="categories-list d-flex flex-column">
+        <!-- Categries -->
+        <div class="product-category" *ngFor="let cat of categories">
+          <div class="radio-container p-0 mb-2 d-flex" (click)="changePage(cat, '')">
+            <div *ngIf="category !== cat" class="radio-check p-0 m-0 mr-2"></div>
+            <div  *ngIf="category === cat" class="checkmark p-0 m-0 mr-2">
+              <div class="inner-check p-0 m-0"></div>
+            </div>
+            {{cat | titlecase}}
+          </div>
+          <div class="category-types p-0 mb-2 pl-3" *ngIf="cat === 'women' && this.hasType">
+            <div class="radio-container mb-2 d-flex" *ngFor="let type of womentypes" (click)="changePage('women', type)">
+              <div *ngIf="category === 'men' || typeSelected !== type" class="radio-check p-0 m-0 mr-2"></div>
+              <div *ngIf="category === 'women' && typeSelected === type" class="checkmark p-0 m-0 mr-2">
+                <div class="inner-check p-0 m-0"></div>
+              </div>
+              {{type | titlecase}}
+            </div>
+          </div>
+          <div class="category-types p-0 mb-2 pl-3" *ngIf="cat === 'men' && this.hasType">
+            <div class="radio-container mb-2 d-flex" *ngFor="let type of mentypes" (click)="changePage('men', type)">
+              <div *ngIf="category === 'women' || typeSelected !== type" class="radio-check p-0 m-0 mr-2"></div>
+              <div *ngIf="category === 'men' && typeSelected === type" class="checkmark p-0 m-0 mr-2">
+                <div class="inner-check p-0 m-0"></div>
+              </div>
+              {{type | titlecase}}
+            </div>
+          </div>
+        </div>
+        <!-- Price -->
+        <p *ngIf="show()" class="side-products-text pb-0 mb-0">Price</p>
+        <mat-form-field *ngIf="show()" class="price-select m-0 p-0" appearance="fill">
+          <mat-label class="pr-0 mr-0">Select range</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let item of ranges" value="item" (click)="range = item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- Size -->
+        <p *ngIf="show()" class="side-products-text p-0 m-0">Size</p>
+        <mat-form-field *ngIf="show()"class="size-select m-0 p-0" appearance="fill">
+          <mat-label class="pr-0 mr-0">Select size</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let item of sizes" value="item" (click)="size = item">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <!-- Types part -->
+    <div *ngIf="!show()" class="center-types">
+      <div class="types-list p-1"*ngIf="this.category === 'women'">
+        <div class="type" *ngFor="let item of womentypes" (click)="changePage(this.category,item)">
+          <div class="type-border p-1">
+            <img class="product-img" src="../../assets/images/women.png">
+            <p class="type-text">{{item | uppercase}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="types-list p-1"*ngIf="this.category === 'men'">
+        <div class="type" *ngFor="let item of mentypes" (click)="changePage(this.category,item)">
+          <div class="type-border p-1">
+            <img class="product-img" src="../../assets/images/men.jpg">
+            <p class="type-text">{{item | uppercase}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Products part -->
+    <div *ngIf="show()" class="center-products">
+      <!-- Products header -->
+      <div class="d-flex justify-content-between">
+        <div class="d-flex">
+          <p class="m-0 mr-2 p-0  center-products-text">Order by</p>
+          <mat-form-field class="sort-select" appearance="fill">
+            <mat-label>Choose here</mat-label>
+            <mat-select>
+              <mat-option value="option1">Popularity</mat-option>
+              <mat-option value="option2">From lowest to highest</mat-option>
+              <mat-option value="option3">From highest to lowest</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="p-0 m-0">
+          <mat-paginator class="paginator" [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = changePageFormat($event)">
+          </mat-paginator>
+        </div>
+      </div>
+      <!-- Products -->
+      <div class="products-list p-1 pt-3">
+        <div class="product" id='' *ngFor="let product of products" (mouseenter)="this.overlay = product"  (mouseleave)="this.overlay = 0; this.overlayState = 'main'">
+          <div class="product-border p-1">
+            <img class="product-img" src="../../assets/images/women.png">
+            <div *ngIf="(this.overlay).toString() === product" class="product-overlay rounded">
+              <div *ngIf="this.overlayState === 'main'" class="product-main-overlay text-center">
+                <p>More</p>
+                <p (click)="this.overlayState = 'color'">Cart</p>
+              </div>
+              <img *ngIf="this.overlayState !== 'main'" (click)="previousState(this.overlayState)" class="left-arrow" src="../../assets/icons/left-arrow.png">
+              <img *ngIf="this.overlayState === 'color'" (click)="nextState(this.overlayState)" class="right-arrow" src="../../assets/icons/right-arrow.png">
+              <div *ngIf="this.overlayState === 'color'" class="product-color-overlay d-flex text-center">
+                <div class="color-circle rounded-circle ml-1 mr-1" *ngFor="let color of colors" [ngStyle]="{'background-color': color}" (click)="nextState(this.overlayState)"></div>
+              </div>
+              <div *ngIf="this.overlayState === 'size'" class="product-color-overlay d-flex">
+                <span class="size-squere ml-2 mr-2" *ngFor="let size of sizes">{{size}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-details d-flex flex-column text-center mt-2 full-over">
+            <span class="product-name">Product name</span>
+            <span>100 RON</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

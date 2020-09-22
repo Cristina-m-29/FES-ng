@@ -1,0 +1,66 @@
+<div class="login">
+  <div class="position-relative login-part">
+    <div class="overlay"></div>
+    <p class="logo p-0 m-0 mt-3" [routerLink]="['']">Atara</p>
+    <div class="log-text">
+      <p class="title">Welcome back!</p>
+      <p class="subtitle">To keep connected with us please <br> login with your personal info</p>
+      <button mat-button class="border border-white log-btn mt-2" [routerLink]="['/atara/login']">Log in</button>
+    </div>
+  </div>
+  <div class="sign-form">
+    <div class="d-flex flex-column text-center form-text">
+      <p class="accent-text">Registration</p>
+      <p class="power-text mb-4">Sign up to get more power.</p>
+      <form [formGroup]="signUpForm" class="signUpForm pl-4 pr-4" (ngSubmit)="signUp()">
+        <div class="form-input">
+          <label>Name</label>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="name" required>
+            <mat-error *ngIf="name.invalid">Field requiered</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input">
+          <label>Email</label>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="email" required>
+            <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-input">
+          <label>Gender</label>
+          <mat-radio-group [formControl]="gender" required>
+            <mat-radio-button color="primary" value="male">Male</mat-radio-button>
+            <mat-radio-button color="primary" value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="form-input">
+          <label>Date of birth</label>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <input  matInput [matDatepicker]="picker" [formControl]="birthday" required>
+            <mat-datepicker-toggle [for]="picker" id="date-toggle">
+              <img matDatepickerToggleIcon id="date-toggle-icon" src="../../assets/icons/calendar.png" alt="choose">
+            </mat-datepicker-toggle>
+            <mat-datepicker id="date-picker" #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="form-input">
+          <label>Password</label>
+          <mat-form-field appearance="fill" class="input-ng">
+            <span class="pass-btn d-flex">
+              <img *ngIf="hide === false" (click)="hide = !hide" src="../../assets/icons/pass-hide.png">
+              <img *ngIf="hide === true" (click)="hide = !hide" src="../../assets/icons/pass-show.png">
+            </span>
+            <input  id="pass-input" matInput minlength="8" maxlength="14" [formControl]="password" [type]="hide ? 'password' : 'text'">
+            <mat-hint *ngIf="this.signUpForm.value.password?.length < 9" align="start">Min 8 characters</mat-hint>
+            <mat-hint *ngIf="this.signUpForm.value.password?.length < 9" align="end">{{this.signUpForm.value.password?.length || 0}} chars</mat-hint>
+          </mat-form-field>
+        </div>        
+        <div class="from-btns mt-3">
+        <button mat-button class="cancel-btn mr-2" [routerLink]="['']">Cancel</button>
+        <button mat-button class="confirm-btn ml-2" type="submit" [disabled]="signUpForm.invalid">Confirm</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

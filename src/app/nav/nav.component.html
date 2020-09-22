@@ -1,0 +1,32 @@
+<nav class="navbar p-0 transparentize fixed-top" id="navbar">
+  <div class="main-container  main-nav pt-3 pb-3 d-flex justify-content-between">
+    <div class="nav justify-content-left align-self-center">
+      <mat-icon *ngIf="authService.navBtn" class="p-0 m-0" (click)="changeMenuState()">reorder</mat-icon>
+      <mat-icon *ngIf="!authService.navBtn" class="p-0 m-0" (click)="changeMenuState()">clear</mat-icon>
+      <span class="logo ml-3" [routerLink]="['']">ATARA</span>
+    </div>
+  
+    <div class="nav justify-content-right align-self-center" *ngIf="!authService.loggedIn()">
+      <button mat-button [routerLink]="['atara/signup']" class="nav-btn border border-white">Sign up</button>
+    </div>
+    
+    <div class="nav justify-content-right user-btns d-flex align-self-center" *ngIf="authService.loggedIn()">
+      <button *ngIf="this.authService.isAdmin()" mat-icon-button aria-label="user" [routerLink]="['/atara/admin/personal-data']">
+        <img src="../../assets/icons/user.png">
+      </button>
+      <button *ngIf="!this.authService.isAdmin()" mat-icon-button aria-label="user" [routerLink]="['/atara/user/personal-data']">
+        <img src="../../assets/icons/user.png">
+      </button>
+      <button mat-icon-button aria-label="fav">
+        <span matBadge="{{favBadge}}" matBadgeColor="warn" matBadgeSize = 'small'>
+          <img src="../../assets/icons/bookmark.png" matBadge="{{favBadge}}" matBadgeColor="warn" [routerLink]="['/atara/wishlist']">
+        </span>
+      </button>
+      <button mat-icon-button aria-label="cart">
+        <span matBadge="{{favBadge}}" matBadgeColor="warn" matBadgeSize = 'small'>
+          <img src="../../assets/icons/bag.png" matBadge="{{favBadge}}" matBadgeColor="warn" [routerLink]="['/atara/cart']">
+        </span>
+      </button>
+    </div>
+  </div>
+</nav>

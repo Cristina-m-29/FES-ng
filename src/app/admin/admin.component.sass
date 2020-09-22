@@ -1,0 +1,147 @@
+@import '../user/user.component.sass'
+
+.orders-grid
+    display: grid
+    grid-template-columns: 10% 10% 13% 62% 5%
+
+.user-small-text
+    font-weight: 600
+    font-size: 1vw
+    color: #3C404C
+
+// Products
+.products-grid
+    display: grid
+    grid-template-columns: 33.33% 33.33% 33.33%
+    grid-gap: 2em
+
+.grid-product
+    background-color: rgb(0, 0, 0, 0.4)
+
+.body-grid
+    display: grid
+    grid-template-rows: 1fr auto
+
+.product-header
+    background-color: rgba(17,203,219,0.8)
+    color: #000000
+    letter-spacing: 0.05em
+    font-size: 1.1vw
+    font-weight: 700
+
+.product-body
+    display: grid
+    grid-template-columns: 50% 50%
+    > div
+        >img
+            object-fit: cover
+            width: 100%
+            height: 100%
+
+.product-details
+    font-weight: 400
+
+.product-name
+    font-size: 1.25vw
+
+.product-color
+    width: 1.35vw
+    height: 1.35vw
+    
+.sizes, .colors
+    display: grid
+    grid-template-columns: repeat(5, 20%)
+
+.cancel-btn, .submit-btn
+    border-radius: 0
+    margin: auto
+
+// Edit
+.edit-product-container
+    border: solid 0.2em #cfc9ba
+    position: fixed
+    z-index: 2
+    height: 67vh
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 30%
+    background-color: #3C404C
+
+.edit-grid
+    display: grid
+    grid-template-columns: 50% 50% 
+    > img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        padding-right: 1em 
+        padding-left: 0.5em
+
+.photo-btn
+    background-color:  rgba(17,203,219,0.5)
+    font-size: 1vw
+
+.cancel-edit-btn
+    width: 95%
+    font-size: 1vw
+
+.edit-field
+    > label
+        color: #cfc9ba
+        line-height: 1vw
+        margin: 0
+    > input
+        width: 100%
+        box-sizing: border-box
+        border-radius: 0
+        padding: 0.1em 0.5em
+        border: none
+        border-bottom: solid 0.2em rgba(17,203,219,0.4)
+        background-color: rgb(0, 0, 0, 0.5)
+        color: #000000
+        &:hover
+            color: #cfc9ba
+            border-bottom: solid 0.2em rgba(17,203,219,0.8)
+        &:focus
+            color: #cfc9ba
+            border-bottom: solid 0.2em rgba(17,203,219,0.8)
+            outline: none
+
+
+.edit-sizes, .edit-colors
+    display: grid
+    grid-template-columns: repeat(5, 20%)
+    cursor: pointer
+
+.edit-sizes
+    > div
+        &:hover
+            color: red
+            font-weight: 500
+
+.edit-colors
+    > div
+        &:hover
+            border: solid 0.2em red 
+
+label
+    color: #cfc9ba
+
+// Add product
+.add-grid
+    display: grid
+    grid-template-columns: 50% 50%
+    > img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+.add-btn
+    width: 100%
+
+.edit-photo-btn
+    width: 92%
+
+.image-selector
+    font-size: 1vw

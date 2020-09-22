@@ -1,0 +1,384 @@
+<div class="user-container user position-relative">
+  <!-- Side navigation for admin -->
+  <div class="side-nav border-right pt-2 pb-0">
+    <div class="d-flex justify-content-between border-bottom pb-3">
+      <p class="welcome-text mt-2 pl-2">Welcome!</p>
+      <p class="logout-btn mt-2 mr-3" (click)="logout()">{{'log out' | uppercase}}</p>
+    </div>
+    <div class="d-flex flex-column mt-4">
+      <p class="border-bottom accent-text pb-2 welcome-text pl-2 m-0">My account</p>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/personal-data']">
+        <div class="d-flex" *ngIf="this.page !== 'personal-data'">
+          <img src="../../assets/icons/user-light.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Personal data</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'personal-data'">
+          <img src="../../assets/icons/user-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Personal data</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/users']">
+        <div class="d-flex" *ngIf="this.page !== 'users'">
+          <img src="../../assets/icons/user-light.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Users</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'users'">
+          <img src="../../assets/icons/user-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Users</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/orders']">
+        <div class="d-flex" *ngIf="this.page !== 'orders'">
+          <img src="../../assets/icons/box-light.png" alt="order icon">
+          <p class="p-0 m-0 ml-2 user-side-text">My orders</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'orders'">
+          <img src="../../assets/icons/box-blue.png" alt="order icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Orders</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/products']">
+        <div class="d-flex" *ngIf="this.page !== 'products'">
+          <img src="../../assets/icons/scan-light.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Products</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'products'">
+          <img src="../../assets/icons/scan-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Products</p>
+        </div>
+      </div>
+      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/add-product']">
+        <div class="d-flex" *ngIf="this.page !== 'add-product'">
+          <img src="../../assets/icons/plus-light.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text">Add products</p>
+        </div>
+        <div class="d-flex" *ngIf="this.page === 'add-product'">
+          <img src="../../assets/icons/plus-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color">Add products</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <!-- Edit product window -->
+    <div *ngIf="productEditId !== -1" class="edit-product-container p-2 pt-0">
+      <div class="d-flex pt-0 mt-0 border-bottom mb-2">
+        <p class="m-0 p-0 mr-2 ml-1">{{this.products[productEditId].category | uppercase}}</p>
+        <p class="m-0 p-0 mr-2"> > </p>
+        <p class="m-0 p-0 mr-2">{{this.products[productEditId].type | uppercase}}</p>  
+        <p class="m-0 p-0 mr-2"> > </p> 
+        <p class="m-0 p-0">{{this.products[productEditId].id}}</p>
+      </div>
+      <div class="edit-grid">
+        <img src="{{this.editProdImg}}">
+        <div class="d-flex flex-column">
+          <input type="file" class="cancel-btn edit-photo-btn m-0 ml-1 p-0 image-selector" (change)="this.photoSelected($event, 'edit')">
+          <div class="edit-field ml-1 mr-1">
+            <label class="m-0 p-0">Product name</label>
+            <input type = "text" name="productName" [(ngModel)]="this.beforeProduct.name">
+          </div>
+          <div class="edit-field ml-1 mr-1">
+            <label class="m-0 p-0">Price</label>
+            <input type = "text" name="productPrice" [(ngModel)]="this.beforeProduct.price">
+          </div>
+        </div>
+      </div>
+      <div class="edit-grid border-bottom pb-1 mb-2">
+        <div class="mr-1 mb-1">
+          <div class="edit-field mb-1">
+            <label class="m-0 p-0">Manage sizes</label>
+            <input type = "search" name="productSize" placeholder="Add sizes here" [(ngModel)]="addSize">
+          </div>
+          <div class="edit-sizes">
+            <div class="border-rounded product-color text-center" *ngFor="let size of this.beforeProduct.sizes" (click)="deleteSize(size.id)">{{size.size}}</div> 
+          </div>
+        </div>
+        <div class="ml-1 mb-1">
+          <div class="edit-field mb-1 mr-1">
+            <label class="m-0 p-0">Manage colors</label>
+            <input type = "text" name="productColor" placeholder="Add colors here" [(ngModel)]="addColor">
+          </div>
+          <div class="edit-colors">
+            <div class="rounded-circle product-color mt-1 text-center" *ngFor="let color of this.beforeProduct.hex_colors" [ngStyle]="{'background-color': color.color}"  (click)="deleteColor(color.id)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="edit-container">
+        <button mat-button class="cancel-btn cancel-edit-btn" (click)="productEditId = -1" (click)="cancelEdit()">Cancel</button>
+        <button mat-button class="submit-btn photo-btn" (click)="editProduct(this.products[productEditId].id)">Save</button>
+      </div>
+    </div>
+    <!-- Personal data -->
+    <div class="user-container" *ngIf="this.page === 'personal-data'">
+      <p class="welcome-text">My Personal Data</p>
+      <!-- Personal data no email and password-->
+      <div>
+        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+          <p class="user-text p-0 m-0">My profile</p>
+          <button mat-button class="user-btn" *ngIf="!this.personalData" (click)="personalData = true">
+            <div class="d-flex">
+              <img class="small-img" src="../../assets/icons/pen.png">
+              <p class="p-0 m-0 user-text">Edit</p>
+            </div>
+          </button>
+        </div>
+        <div *ngIf="!this.personalData" class="personal-data-main p-2 pl-4 border-left border-bottom border-right">
+          <div>
+            <p>First Name</p>
+            <p>Last Name</p>
+            <p>Account type</p>
+            <p>Gender</p>
+            <p>Bithday</p>
+          </div>
+          <div>
+            <p>{{firstName}}</p>
+            <p>{{lastName}}</p>
+            <p>User/Individual</p>
+            <p>{{selectedGender}}</p>
+            <p>{{birthday}}</p>
+          </div>
+        </div>
+        <div *ngIf="this.personalData" class="personal-data-edit p-2 pl-4 border-left border-bottom border-right">
+          <form class="editForm" #personalDataForm="ngForm" (ngSubmit)="editPersonalData(personalDataForm)">
+            <div class="edit-container">
+              <div class="f-flex flex-column mr-4">
+                <p class="m-0 p-0 form-label">First name</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="firstName" [(ngModel)]="firstName" required>
+                </mat-form-field>
+              </div>
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Last name</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="lastName" [(ngModel)]="lastName" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container">
+              <div class="d-flex flex-column">
+                <p class="m-0 p-0 form-label mb-2">Gender</p>
+                <div class="d-flex">
+                  <div class="radio-container mr-3 d-flex" *ngFor="let gender of genders" (click)="selectedGender = gender">
+                    <div *ngIf="this.selectedGender !== gender" class="radio-check p-0 m-0 mr-2"></div>
+                    <div *ngIf="this.selectedGender === gender" class="checkmark p-0 m-0 mr-2">
+                      <div class="inner-check p-0 m-0"></div>
+                    </div>
+                    {{gender | titlecase}}
+                  </div>
+                </div>
+              </div>  
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Bithday</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="birthday" [(ngModel)]="birthday" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container mt-1">
+              <button mat-button class="cancel-btn" (click)="personalData = false">Cancel</button>
+              <button mat-button class="submit-btn" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Email and password -->
+      <div class="mt-3 mb-3">
+        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+          <p class="user-text p-0 m-0">Email and password</p>
+          <div class="d-flex" *ngIf="!this.emailAndPassword">
+            <button mat-button class="user-btn" *ngIf="hide" (click)="hide = !hide">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pass-show.png">
+                <p class="p-0 m-0 user-text">Show</p>
+              </div>
+            </button>
+            <button mat-button class="user-btn" *ngIf="!hide" (click)="hide = !hide">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pass-hide.png">
+                <p class="p-0 m-0 user-text">Hide</p>
+              </div>
+            </button>
+            <button mat-button class="user-btn text-center ml-2" (click)="emailAndPassword = true">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pen.png">
+                <p class="p-0 m-0 user-text">Edit</p>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-2 pl-4 border-left border-bottom border-right">
+          <p>{{email}}</p>
+          <div class="password d-flex justify-content-between">
+            <p *ngIf="!hide" class="p-0 m-0">{{password}}</p>
+            <p *ngIf="hide"class="p-0 m-0">*********</p>
+          </div>
+        </div>
+        <div *ngIf="this.emailAndPassword" class="p-2 pl-4 border-left border-bottom border-right">
+          <form class="editForm" #emailAndPassForm="ngForm" (ngSubmit)="editEmailAndPassword(emailAndPassForm)">
+            <div class="edit-container">
+              <div class="f-flex flex-column mr-4">
+                <p class="m-0 p-0 form-label">Email</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="email" [(ngModel)]="email" required>
+                </mat-form-field>
+              </div>
+              <div class="f-flex flex-column">
+                <p class="m-0 p-0 form-label">Password</p>
+                <mat-form-field appearance="fill" class="input-ng">
+                  <input matInput name="password" [(ngModel)]="password" required>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="edit-container">
+              <button mat-button class="cancel-btn" (click)="this.emailAndPassword = false">Cancel</button>
+              <button mat-button type="submit" class="submit-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Users -->
+    <div class="user-container" *ngIf="this.page === 'users'">
+      <p class="welcome-text">Store users</p>
+      <p class="p-0 m-0" *ngIf="this.nrUsers === 0">No users found</p>
+      <div *ngIf="this.nrUsers !== 0">
+        <div *ngFor="let user of users" class="mb-3">
+          <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+            <p class="user-text p-0 m-0">User nr. {{user.number}}</p>
+            <button mat-button class="user-btn" (click)="deleteUser(user.email)">
+              <div class="d-flex">
+                <img class="small-img" src="../../assets/icons/pen.png">
+                <p class="p-0 m-0 user-text">Delete user</p>
+              </div>
+            </button>
+          </div>
+          <div class="personal-data-main p-2 pl-4 border-left border-bottom border-right">
+            <div>
+              <p>Id</p>
+              <p>Name</p>
+              <p>Email</p>
+              <p>Total orders</p>
+              <p>Total favorites</p>
+            </div>
+            <div>
+              <p>{{user.id}}</p>
+              <p>{{user.name}}</p>
+              <p>{{user.email}}</p>
+              <p>{{user.order}}</p>
+              <p>{{user.favorites}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Orders -->
+    <div class="user-container" *ngIf="this.page === 'orders'">
+      <p class="welcome-text">Users orders</p>
+      <p class="p-0 m-0" *ngIf="nrOrders === 0">No orders found</p>
+      <div *ngIf="nrOrders !== 0">
+        <div  class="orders-grid user-header p-2 pr-2 pl-2">
+          <p class="user-small-text text-center p-0 m-0">Order</p>
+          <p class="user-small-text text-center p-0 m-0">User id</p>
+          <p class="user-small-text text-center p-0 m-0">Date</p>
+          <p class="user-small-text text-center p-0 m-0">Products</p>
+          <p class="user-small-text text-center p-0 m-0">Price</p>
+        </div>
+        <div class="p-2 border-left border-bottom border-right">
+          <div *ngFor="let order of orders" class="orders-grid pt-2 pb-2 border-bottom">
+            <p class="text-center">{{order.number}}</p>
+            <p class="text-center">{{order.id}}</p>
+            <p class="text-center">{{order.date}}</p>
+            <div class="pl-2">
+              <div class="order-summary">
+                <div class="mb-1">
+                  <p class="border-bottom p-0 m-0 mr-2">Product name</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Size</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Color</p>
+                  <p class="border-bottom p-0 m-0 mr-2">Pieces</p>
+                  <p class="border-bottom p-0 m-0 mr-3">Price</p>
+                </div>
+                <div class="order-products" *ngFor="let prod of order.products">
+                  <p class="p-0 m-0 mr-2">{{prod.name}}</p>
+                  <p class="p-0 m-0 mr-2">{{prod.size}}, M, L</p>
+                  <p class="p-0 m-0 mr-2">{{prod.color}}</p>
+                  <p class="p-0 m-0 mr-2">{{prod.pieces}}</p>
+                  <p class="p-0 m-0">{{prod.price}}</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-center">{{order.price}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Products -->
+    <div class="user-container" *ngIf="this.page === 'products'">
+      <div class="welcome-text">Store products</div>
+      <div class="products-grid mt-3">
+        <div *ngFor="let prod of products" class="position-relative grid-product pb-1 border">
+          <div class="product-header d-flex p-1 pl-2">
+            <p class="m-0 p-0 mr-2">{{prod.category | uppercase}}</p>
+            <p class="m-0 p-0 mr-2"> > </p>
+            <p class="m-0 p-0 mr-2">{{prod.type | uppercase}}</p>  
+            <p class="m-0 p-0 mr-2"> > </p> 
+            <p class="m-0 p-0">{{prod.id}}</p>
+          </div>
+          <div class="body-grid">
+            <div class="product-body">
+              <div>
+                <img class="product-img p-1" src="../../assets/images/girl.jpg">
+              </div>
+              <div class="product-info d-flex flex-column p-1">
+                <p class="products-details product-name m-0">{{prod.name}}</p>
+                <p class="product-details  m-0">{{prod.price}} RON</p>
+                <div class="sizes">
+                  <div class="border-rounded mb-1 product-color text-center" *ngFor="let size of prod.sizes">{{size.size}}</div>
+                </div>
+                <div class="colors mt-2">
+                  <div class="rounded-circle mb-1 product-color text-center" *ngFor="let color of prod.hex_colors" [ngStyle]="{'background-color': color.color}"></div>
+                </div>
+              </div>
+            </div>
+            <div class="edit-container">
+              <button mat-button class="cancel-btn" [disabled]="productEditId !== -1">Delete</button>
+              <button mat-button class="submit-btn" [disabled]="productEditId !== -1" (click)="openEditWindow(prod.id)">Edit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Add product -->
+    <div class="user-container add-grid mt-2" *ngIf="this.page === 'add-product'">
+      <img class="mr-2" src="{{this.addProdImg}}">
+      <div class="d-flex flex-column ml-2">
+        <!-- <button mat-button class="cancel-btn add-btn">Add photo</button> -->
+        <input type="file" class="cancel-btn add-btn m-0 p-0 image-selector" (change)="this.photoSelected($event, 'add')">
+        <div class="edit-field">
+          <label class="m-0">Designed for</label>
+          <input type="text" placeholder="Women" [(ngModel)]="productDesign">
+        </div>
+        <div class="edit-field">
+          <label class="m-0">Category</label>
+          <input type="text" placeholder="Jeans" [(ngModel)]="productCategory">
+        </div>
+        <div class="edit-field">
+          <label class="m-0">Product name</label>
+          <input type="text" placeholder="Jeans one" [(ngModel)]="productName">
+        </div>
+        <div class="edit-field">
+          <label class="m-0">Price</label>
+          <input type="text" placeholder="30.79" [(ngModel)]="productPrice">
+        </div>
+        <div class="edit-field">
+          <label class="m-0">Add colors in hex format</label>
+          <input type="text" placeholder="#000000" [(ngModel)]="productColors">
+        </div>
+        <div class="edit-field">
+          <label class="m-0">Add sizes</label>
+          <input type="text" placeholder="S, M" [(ngModel)]="productSizes">
+        </div>
+        <button mat-button class="submit-btn add-btn mt-3">Add product</button>
+      </div>
+    </div>
+  </div>
+</div>

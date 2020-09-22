@@ -1,0 +1,183 @@
+<!-- Cart products -->
+<div class="cart cart-container border-bottom">
+  <div class="cart-product m-3 ml-4 mr-4" *ngFor="let item of [1,2,3,4,7,7,5,7]">
+    <div class="cart-border p-1 position-relative">
+      <img src="../../assets/images/boy.jpg">
+    </div>
+    <div class="cart-info position-relative p-0 m-0 ml-3 d-flex flex-column"> 
+      <p class="p-0 m-0 cart-name">PRODUCT NAME</p>
+      <div class="cart-details">
+        <div class="cart-tags d-flex flex-column full-over">
+          <span>Product id</span>
+          <span>Price</span>
+          <span>Color</span>
+          <span class="mb-1">Size</span>
+          <button mat-button class="cart-btn delete-btn p-0">Delete</button>
+        </div>
+        <div class="d-flex flex-column full-over">
+          <span>299087</span>
+          <span>1 x 79.60 RON</span>
+          <span>Blue</span>
+          <span class="mb-1">M</span>
+          <button mat-button class="cart-btn cart-cart-btn">One more</button>
+        </div>
+      </div>
+      <div class="cart-btns align-content-end">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Place order -->
+<div class="cart-container pt-4 mb-4">
+  <div class="order">
+    <div class="d-flex flex-column justify-space-between pr-4">
+      <p class="p-0 m-0">SELECT ADDRESS</p>
+      <div>
+        <div class="radio-container mt-3 mb-3 d-flex" *ngFor="let address of addresses" (click)="selectedAddress = address[0]">
+          <div *ngIf="this.selectedAddress !== address[0]" class="radio-check p-0 m-0 mr-2"></div>
+          <div *ngIf="this.selectedAddress === address[0]" class="checkmark p-0 m-0 mr-2">
+            <div class="inner-check p-0 m-0"></div>
+          </div>
+          Street {{address[1] | titlecase}}, nr. {{address[0]}}, {{address[2] | titlecase}}, {{address[3] | titlecase}}
+        </div>
+      </div>
+      <button mat-button class="btn add-address-btn">Add new address</button>
+    </div>
+    <div class="border-left pl-4 d-flex flex-column position-relative">
+      <p class="p-0 m-0">SELECT PAYMENT METHOD</p>
+      <div class="d-flex mt-3 mb-3">
+        <div class="radio-container mr-3 d-flex" *ngFor="let method of payMethods" (click)="selectedMethod = method">
+          <div *ngIf="this.selectedMethod !== method" class="radio-check p-0 m-0 mr-2"></div>
+          <div *ngIf="this.selectedMethod === method" class="checkmark p-0 m-0 mr-2">
+            <div class="inner-check p-0 m-0"></div>
+          </div>
+          {{method | titlecase}}
+        </div>
+      </div>
+      <p *ngIf="orderError" class="p-0 m-0 text-danger">Please select address and payment method</p>
+      <button mat-button class="btn order-btn" (click)="sendOrder()">Send order</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add new address to user -->
+<div class="address-container mb-5">
+  <p class="p-0 m-0 mb-4">ADD NEW ADDRESS</p>
+  <form [formGroup]="addNewAddressForm" class="address-form" (ngSubmit)="addAddress()">
+    <div class="address-form-group">
+      <div class="form-input mr-5">
+        <p class="m-0 p-0 form-label">Name</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="name" required>
+          <mat-error *ngIf="name.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-input">
+        <p class="m-0 p-0 form-label">Street</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="street" required>
+          <mat-error *ngIf="street.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="address-form-group">
+      <div class="form-input mr-5">
+        <p class="m-0 p-0 form-label">Number</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="streetNr" required>
+          <mat-error *ngIf="streetNr.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-input">
+        <p class="m-0 p-0 form-label">City</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="city" required>
+          <mat-error *ngIf="city.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="address-form-group">
+      <div class="mr-5">
+        <div class="form-input">
+          <p class="m-0 p-0 form-label">Country</p>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="country" required>
+            <mat-error *ngIf="country.invalid">Field requiered</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-button class="cancel-btn p-1 text-center">Cancel</button>
+      </div>
+      <div>
+        <div class="form-input">
+          <p class="m-0 p-0 form-label">Postal code</p>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="postalCode" required>
+            <mat-error *ngIf="postalCode.invalid">Field requiered</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-button class="address-btn p-1 text-center" type="submit">Add address</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Add new card to user -->
+<div class="address-container mb-5">
+  <p class="p-0 m-0 mb-4">ADD NEW CARD</p>
+  <form [formGroup]="addNewCardForm" class="address-form" (ngModelChange)="addCard()">
+    <div class="address-form-group">
+      <div class="form-input-card mr-4 pb-3">
+        <div>Type of card</div>
+        <div class="d-flex pt-1">
+          <div class="radio-container mr-3 d-flex" *ngFor="let type of cardTypes" (click)="cardType = type">
+            <div *ngIf="this.cardType !== type" class="radio-check p-0 m-0 mr-2"></div>
+            <div *ngIf="this.cardType === type" class="checkmark p-0 m-0 mr-2">
+              <div class="inner-check p-0 m-0"></div>
+            </div>
+            {{type | titlecase}}
+          </div>
+        </div>
+      </div>
+      <span class="border-left pl-3 pb-3 text-center">Expiration date</span>
+    </div>
+    <div class="address-form-group">
+      <div class="form-input-card mr-3">
+        <p class="m-0 p-0 form-label">Card number</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="cardNumber" required>
+          <mat-error *ngIf="cardNumber.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-input-card border-left pl-3">
+        <p class="m-0 p-0 form-label">Month</p>
+        <mat-form-field appearance="fill" class="input-ng">
+          <input matInput [formControl]="monthExp" required>
+          <mat-error *ngIf="monthExp.invalid">Field requiered</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="address-form-group">
+      <div class="mr-3">
+        <div class="form-input-card">
+          <p class="m-0 p-0 form-label">Security code</p>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="securityCode" required>
+            <mat-error *ngIf="securityCode.invalid">Field requiered</mat-error>
+          </mat-form-field>
+        </div>
+        <button mat-button class="cart-btn p-1 text-center" type="submit">Add card</button>
+      </div>
+      <div class="border-left pl-3">
+        <div class="form-input-card">
+          <p class="m-0 p-0 form-label">Year</p>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="yearExp" required>
+            <mat-error *ngIf="yearExp.invalid">Field requiered</mat-error>
+          </mat-form-field> 
+        </div> 
+        <button mat-button class="cancel-btn p-1 text-center">Cancel</button>      
+      </div>
+    </div>
+  </form>
+</div>
