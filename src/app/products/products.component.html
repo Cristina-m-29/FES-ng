@@ -11,11 +11,11 @@
   <div class="main-products main-container mt-3 pt-5">
     <!-- Side menu -->
     <div class="side-products">
-      <p class="side-products-text">Categories</p>
+      <p class="side-products-text pt-2">Categories</p> 
       <div class="categories-list d-flex flex-column">
         <!-- Categries -->
         <div class="product-category" *ngFor="let cat of categories">
-          <div class="radio-container p-0 mb-2 d-flex" (click)="changePage(cat, '')">
+          <div class="radio-container p-0 mb-3 d-flex" (click)="changePage(cat, '')">
             <div *ngIf="category !== cat" class="radio-check p-0 m-0 mr-2"></div>
             <div  *ngIf="category === cat" class="checkmark p-0 m-0 mr-2">
               <div class="inner-check p-0 m-0"></div>
@@ -23,7 +23,7 @@
             {{cat | titlecase}}
           </div>
           <div class="category-types p-0 mb-2 pl-3" *ngIf="cat === 'women' && this.hasType">
-            <div class="radio-container mb-2 d-flex" *ngFor="let type of womentypes" (click)="changePage('women', type)">
+            <div class="radio-container mb-3 d-flex" *ngFor="let type of womentypes" (click)="changePage('women', type)">
               <div *ngIf="category === 'men' || typeSelected !== type" class="radio-check p-0 m-0 mr-2"></div>
               <div *ngIf="category === 'women' && typeSelected === type" class="checkmark p-0 m-0 mr-2">
                 <div class="inner-check p-0 m-0"></div>
@@ -32,7 +32,7 @@
             </div>
           </div>
           <div class="category-types p-0 mb-2 pl-3" *ngIf="cat === 'men' && this.hasType">
-            <div class="radio-container mb-2 d-flex" *ngFor="let type of mentypes" (click)="changePage('men', type)">
+            <div class="radio-container mb-3 d-flex" *ngFor="let type of mentypes" (click)="changePage('men', type)">
               <div *ngIf="category === 'women' || typeSelected !== type" class="radio-check p-0 m-0 mr-2"></div>
               <div *ngIf="category === 'men' && typeSelected === type" class="checkmark p-0 m-0 mr-2">
                 <div class="inner-check p-0 m-0"></div>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <!-- Price -->
-        <p *ngIf="show()" class="side-products-text pb-0 mb-0">Price</p>
+        <p *ngIf="show()" class="side-products-text pb-0 mb-1">Price</p>
         <mat-form-field *ngIf="show()" class="price-select m-0 p-0" appearance="fill">
           <mat-label class="pr-0 mr-0">Select range</mat-label>
           <mat-select>
@@ -50,7 +50,7 @@
           </mat-select>
         </mat-form-field>
         <!-- Size -->
-        <p *ngIf="show()" class="side-products-text p-0 m-0">Size</p>
+        <p *ngIf="show()" class="side-products-text p-0 m-0 mb-1">Size</p>
         <mat-form-field *ngIf="show()"class="size-select m-0 p-0" appearance="fill">
           <mat-label class="pr-0 mr-0">Select size</mat-label>
           <mat-select>
@@ -83,7 +83,7 @@
       <!-- Products header -->
       <div class="d-flex justify-content-between">
         <div class="d-flex">
-          <p class="m-0 mr-2 p-0  center-products-text">Order by</p>
+          <p class="m-0 mr-2 pt-2 p-0 center-products-text">Order by</p>
           <mat-form-field class="sort-select" appearance="fill">
             <mat-label>Choose here</mat-label>
             <mat-select>
@@ -93,13 +93,13 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="p-0 m-0">
+        <!-- <div class="p-0 m-0">
           <mat-paginator class="paginator" [length]="length"
                [pageSize]="pageSize"
                [pageSizeOptions]="pageSizeOptions"
                (page)="pageEvent = changePageFormat($event)">
           </mat-paginator>
-        </div>
+        </div> -->
       </div>
       <!-- Products -->
       <div class="products-list p-1 pt-3">

@@ -5,13 +5,13 @@
   <div *ngIf="this.authService.loggedIn()" class="circle circle-4"></div>
   <div *ngIf="this.authService.loggedIn()" class="circle circle-5"></div>
   <div *ngIf="this.authService.loggedIn()" class="circle circle-6"></div>
-  <div *ngIf="this.authService.loggedIn()" class="circle circle-7"></div>
+  <div *ngIf="this.authService.loggedIn()" class="circle circle-7"></div> 
   <div *ngIf="this.authService.loggedIn()" class="circle circle-8"></div>
   <div class="main-container">
       <div *ngIf="!this.authService.loggedIn()" class="main-landing">
           <img class="girl-img" src="../../assets/landing/girl-crop-1.png">
           <div class="main-text">
-              <p class="title pb-2 text-left" [ngClass]="{titleChrome: isChrome}">Wear clothes <br> that <span class="accent-text">matter</span></p>
+              <p class="title pb-2 text-left">Wear clothes <br> that <span class="accent-text">matter</span></p>
               <button mat-button class="main-btn" [routerLink]="['/atara/products']" [queryParams]="{category: 'women'}">Shop now</button>
           </div>
       </div>
@@ -21,7 +21,7 @@
               <img class="m-0 ml-5" src="../../assets/landing/women-neon.png"> 
           </div>
           <div class="main-text">
-              <p class="title pb-2 text-left" [ngClass]="{titleChrome: isChrome}">Wear clothes <br> that <span class="accent-text">matter</span></p>
+              <p class="title pb-2 text-left">Wear clothes <br> that <span class="accent-text">matter</span></p>
               <button mat-button class="main-btn" [routerLink]="['/atara/products']" [queryParams]="{category: 'women'}">Shop now</button>
           </div>
       </div>

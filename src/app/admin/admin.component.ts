@@ -33,7 +33,7 @@ export class AdminComponent implements OnInit {
     {number: 1112, id: 111, date: '27/02/2020', price: 278, products: [{name: 'Dress 1', size: 'XS', color: 'Blue', pieces: 1, price: 70},
     {name: 'Dress 2', size: 'M', color: 'Black', pieces: 2, price: 104}]},
     {number: 1113, id: 112, date: '03/09/2020', price: 140, products: 
-    [{name: 'Jeans', size: 'S', color: 'Light Blue', pieces: 1, price: 140}]}
+    [{name: 'Jeans', size: 'S', color: 'Blue', pieces: 1, price: 140}]}
   ];
   nrOrders: number;
 

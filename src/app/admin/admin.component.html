@@ -6,8 +6,8 @@
       <p class="logout-btn mt-2 mr-3" (click)="logout()">{{'log out' | uppercase}}</p>
     </div>
     <div class="d-flex flex-column mt-4">
-      <p class="border-bottom accent-text pb-2 welcome-text pl-2 m-0">My account</p>
-      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/personal-data']">
+      <p class="border-bottom accent-text pb-4 welcome-text pl-2 m-0">Admin account</p>
+      <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/admin/personal-data']">
         <div class="d-flex" *ngIf="this.page !== 'personal-data'">
           <img src="../../assets/icons/user-light.png" alt="person icon">
           <p class="p-0 m-0 ml-2 user-side-text">Personal data</p>
@@ -17,7 +17,7 @@
           <p class="p-0 m-0 ml-2 user-side-text-color">Personal data</p>
         </div>
       </div>
-      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/users']">
+      <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/admin/users']">
         <div class="d-flex" *ngIf="this.page !== 'users'">
           <img src="../../assets/icons/user-light.png" alt="person icon">
           <p class="p-0 m-0 ml-2 user-side-text">Users</p>
@@ -27,7 +27,7 @@
           <p class="p-0 m-0 ml-2 user-side-text-color">Users</p>
         </div>
       </div>
-      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/orders']">
+      <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/admin/orders']">
         <div class="d-flex" *ngIf="this.page !== 'orders'">
           <img src="../../assets/icons/box-light.png" alt="order icon">
           <p class="p-0 m-0 ml-2 user-side-text">My orders</p>
@@ -37,7 +37,7 @@
           <p class="p-0 m-0 ml-2 user-side-text-color">Orders</p>
         </div>
       </div>
-      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/products']">
+      <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/admin/products']">
         <div class="d-flex" *ngIf="this.page !== 'products'">
           <img src="../../assets/icons/scan-light.png" alt="person icon">
           <p class="p-0 m-0 ml-2 user-side-text">Products</p>
@@ -47,7 +47,7 @@
           <p class="p-0 m-0 ml-2 user-side-text-color">Products</p>
         </div>
       </div>
-      <div class="side-nav-option border-bottom p-2" [routerLink]="['/atara/admin/add-product']">
+      <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/admin/add-product']">
         <div class="d-flex" *ngIf="this.page !== 'add-product'">
           <img src="../../assets/icons/plus-light.png" alt="person icon">
           <p class="p-0 m-0 ml-2 user-side-text">Add products</p>
@@ -110,10 +110,10 @@
     </div>
     <!-- Personal data -->
     <div class="user-container" *ngIf="this.page === 'personal-data'">
-      <p class="welcome-text">My Personal Data</p>
+      <p class="welcome-text mb-4">My Personal Data</p>
       <!-- Personal data no email and password-->
       <div>
-        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+        <div class="d-flex justify-content-between user-header p-3 pr-4 pl-4">
           <p class="user-text p-0 m-0">My profile</p>
           <button mat-button class="user-btn" *ngIf="!this.personalData" (click)="personalData = true">
             <div class="d-flex">
@@ -122,7 +122,7 @@
             </div>
           </button>
         </div>
-        <div *ngIf="!this.personalData" class="personal-data-main p-2 pl-4 border-left border-bottom border-right">
+        <div *ngIf="!this.personalData" class="personal-data-main p-3 pl-4 border-left border-bottom border-right">
           <div>
             <p>First Name</p>
             <p>Last Name</p>
@@ -138,17 +138,17 @@
             <p>{{birthday}}</p>
           </div>
         </div>
-        <div *ngIf="this.personalData" class="personal-data-edit p-2 pl-4 border-left border-bottom border-right">
+        <div *ngIf="this.personalData" class="personal-data-edit p-3 pl-4 border-left border-bottom border-right">
           <form class="editForm" #personalDataForm="ngForm" (ngSubmit)="editPersonalData(personalDataForm)">
             <div class="edit-container">
               <div class="f-flex flex-column mr-4">
-                <p class="m-0 p-0 form-label">First name</p>
+                <p class="m-0 p-0 mb-2 form-label">First name</p>
                 <mat-form-field appearance="fill" class="input-ng">
                   <input matInput name="firstName" [(ngModel)]="firstName" required>
                 </mat-form-field>
               </div>
               <div class="f-flex flex-column">
-                <p class="m-0 p-0 form-label">Last name</p>
+                <p class="m-0 p-0 mb-2 form-label">Last name</p>
                 <mat-form-field appearance="fill" class="input-ng">
                   <input matInput name="lastName" [(ngModel)]="lastName" required>
                 </mat-form-field>
@@ -156,7 +156,7 @@
             </div>
             <div class="edit-container">
               <div class="d-flex flex-column">
-                <p class="m-0 p-0 form-label mb-2">Gender</p>
+                <p class="m-0 p-0 form-label mb-4">Gender</p>
                 <div class="d-flex">
                   <div class="radio-container mr-3 d-flex" *ngFor="let gender of genders" (click)="selectedGender = gender">
                     <div *ngIf="this.selectedGender !== gender" class="radio-check p-0 m-0 mr-2"></div>
@@ -168,7 +168,7 @@
                 </div>
               </div>  
               <div class="f-flex flex-column">
-                <p class="m-0 p-0 form-label">Bithday</p>
+                <p class="m-0 p-0 mb-2 form-label">Bithday</p>
                 <mat-form-field appearance="fill" class="input-ng">
                   <input matInput name="birthday" [(ngModel)]="birthday" required>
                 </mat-form-field>
@@ -183,16 +183,16 @@
       </div>
       <!-- Email and password -->
       <div class="mt-3 mb-3">
-        <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+        <div class="d-flex justify-content-between user-header p-3 pr-4 pl-4">
           <p class="user-text p-0 m-0">Email and password</p>
           <div class="d-flex" *ngIf="!this.emailAndPassword">
-            <button mat-button class="user-btn" *ngIf="hide" (click)="hide = !hide">
+            <button mat-button class="user-btn mr-2" *ngIf="hide" (click)="hide = !hide">
               <div class="d-flex">
                 <img class="small-img" src="../../assets/icons/pass-show.png">
                 <p class="p-0 m-0 user-text">Show</p>
               </div>
             </button>
-            <button mat-button class="user-btn" *ngIf="!hide" (click)="hide = !hide">
+            <button mat-button class="user-btn mr-2" *ngIf="!hide" (click)="hide = !hide">
               <div class="d-flex">
                 <img class="small-img" src="../../assets/icons/pass-hide.png">
                 <p class="p-0 m-0 user-text">Hide</p>
@@ -206,24 +206,24 @@
             </button>
           </div>
         </div>
-        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-2 pl-4 border-left border-bottom border-right">
+        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-3 pl-4 border-left border-bottom border-right">
           <p>{{email}}</p>
           <div class="password d-flex justify-content-between">
             <p *ngIf="!hide" class="p-0 m-0">{{password}}</p>
             <p *ngIf="hide"class="p-0 m-0">*********</p>
           </div>
         </div>
-        <div *ngIf="this.emailAndPassword" class="p-2 pl-4 border-left border-bottom border-right">
+        <div *ngIf="this.emailAndPassword" class="p-3 pl-4 border-left border-bottom border-right">
           <form class="editForm" #emailAndPassForm="ngForm" (ngSubmit)="editEmailAndPassword(emailAndPassForm)">
             <div class="edit-container">
               <div class="f-flex flex-column mr-4">
-                <p class="m-0 p-0 form-label">Email</p>
+                <p class="m-0 p-0 mb-2 form-label">Email</p>
                 <mat-form-field appearance="fill" class="input-ng">
                   <input matInput name="email" [(ngModel)]="email" required>
                 </mat-form-field>
               </div>
               <div class="f-flex flex-column">
-                <p class="m-0 p-0 form-label">Password</p>
+                <p class="m-0 p-0 mb-2 form-label">Password</p>
                 <mat-form-field appearance="fill" class="input-ng">
                   <input matInput name="password" [(ngModel)]="password" required>
                 </mat-form-field>
@@ -239,11 +239,11 @@
     </div>
     <!-- Users -->
     <div class="user-container" *ngIf="this.page === 'users'">
-      <p class="welcome-text">Store users</p>
+      <p class="welcome-text mb-4">Store users</p>
       <p class="p-0 m-0" *ngIf="this.nrUsers === 0">No users found</p>
       <div *ngIf="this.nrUsers !== 0">
         <div *ngFor="let user of users" class="mb-3">
-          <div class="d-flex justify-content-between user-header p-2 pr-4 pl-4">
+          <div class="d-flex justify-content-between user-header p-3 pr-4 pl-4">
             <p class="user-text p-0 m-0">User nr. {{user.number}}</p>
             <button mat-button class="user-btn" (click)="deleteUser(user.email)">
               <div class="d-flex">
@@ -252,7 +252,7 @@
               </div>
             </button>
           </div>
-          <div class="personal-data-main p-2 pl-4 border-left border-bottom border-right">
+          <div class="personal-data-main p-3 pl-4 border-left border-bottom border-right">
             <div>
               <p>Id</p>
               <p>Name</p>
@@ -273,34 +273,38 @@
     </div>
     <!-- Orders -->
     <div class="user-container" *ngIf="this.page === 'orders'">
-      <p class="welcome-text">Users orders</p>
+      <p class="welcome-text mb-4">Users orders</p>
       <p class="p-0 m-0" *ngIf="nrOrders === 0">No orders found</p>
       <div *ngIf="nrOrders !== 0">
-        <div  class="orders-grid user-header p-2 pr-2 pl-2">
+        <div  class="orders-grid user-header p-3 pr-2 pl-2">
           <p class="user-small-text text-center p-0 m-0">Order</p>
           <p class="user-small-text text-center p-0 m-0">User id</p>
           <p class="user-small-text text-center p-0 m-0">Date</p>
           <p class="user-small-text text-center p-0 m-0">Products</p>
           <p class="user-small-text text-center p-0 m-0">Price</p>
         </div>
-        <div class="p-2 border-left border-bottom border-right">
-          <div *ngFor="let order of orders" class="orders-grid pt-2 pb-2 border-bottom">
+        <div class="p-3 border-left border-bottom border-right">
+          <div *ngFor="let order of orders" class="orders-grid pt-2 pb-2 mb-3 border-bottom">
             <p class="text-center">{{order.number}}</p>
             <p class="text-center">{{order.id}}</p>
             <p class="text-center">{{order.date}}</p>
             <div class="pl-2">
               <div class="order-summary">
                 <div class="mb-1">
-                  <p class="border-bottom p-0 m-0 mr-2">Product name</p>
-                  <p class="border-bottom p-0 m-0 mr-2">Size</p>
-                  <p class="border-bottom p-0 m-0 mr-2">Color</p>
-                  <p class="border-bottom p-0 m-0 mr-2">Pieces</p>
-                  <p class="border-bottom p-0 m-0 mr-3">Price</p>
+                  <p class="border-bottom p-0 m-0 mb-2 mr-3">Product name</p>
+                  <p class="border-bottom p-0 m-0 mb-2 mr-3">Size</p>
+                  <p class="border-bottom p-0 m-0 mb-2 mr-3">Color</p>
+                  <p class="border-bottom p-0 m-0 mb-2 mr-3">Pieces</p>
+                  <p class="border-bottom p-0 m-0 mb-2">Price</p>
                 </div>
-                <div class="order-products" *ngFor="let prod of order.products">
+                <div class="order-products mb-2" *ngFor="let prod of order.products">
                   <p class="p-0 m-0 mr-2">{{prod.name}}</p>
-                  <p class="p-0 m-0 mr-2">{{prod.size}}, M, L</p>
-                  <p class="p-0 m-0 mr-2">{{prod.color}}</p>
+                  <div class="d-flex">
+                    <p class="p-0 m-0 product-size">{{prod.size}}</p>
+                  </div>
+                  <div class="d-flex">
+                    <div class="p-0 m-0 product-color" [ngStyle]="{'background-color': prod.color}"></div>
+                  </div>
                   <p class="p-0 m-0 mr-2">{{prod.pieces}}</p>
                   <p class="p-0 m-0">{{prod.price}}</p>
                 </div>
@@ -351,39 +355,39 @@
     <div class="user-container add-grid mt-2" *ngIf="this.page === 'add-product'">
       <img class="mr-2" src="{{this.addProdImg}}">
       <div class="d-flex flex-column ml-2 add-product">
-        <input type="file" class="cancel-btn add-btn m-0 p-0 image-selector" (change)="this.photoSelected($event, 'add')">
+        <input type="file" class="cancel-btn add-btn m-0 p-0 mb-2 image-selector" (change)="this.photoSelected($event, 'add')">
         <div class="edit-field">
-          <label class="m-0">Designed for</label>
-          <input type="text" placeholder="Women" [(ngModel)]="productDesign">
+          <label class="m-0 mb-2">Designed for</label>
+          <input class="mb-2" type="text" placeholder="Women" [(ngModel)]="productDesign">
         </div>
         <div class="edit-field">
-          <label class="m-0">Category</label>
-          <input type="text" placeholder="Jeans" [(ngModel)]="productCategory">
+          <label class="m-0 mb-2">Category</label>
+          <input class="mb-2" type="text" placeholder="Jeans" [(ngModel)]="productCategory">
         </div>
         <div class="edit-field">
-          <label class="m-0">Product name</label>
-          <input type="text" placeholder="Jeans one" [(ngModel)]="productName">
+          <label class="m-0 mb-2">Product name</label>
+          <input class="mb-2" type="text" placeholder="Jeans one" [(ngModel)]="productName">
         </div>
         <div class="edit-field">
-          <label class="m-0">Price</label>
-          <input type="text" placeholder="30.79" [(ngModel)]="productPrice">
+          <label class="m-0 mb-2">Price</label>
+          <input class="mb-2" type="text" placeholder="30.79" [(ngModel)]="productPrice">
         </div>
         <div class="edit-field">
-          <label class="m-0">Add colors (click color to delete it)</label>
-          <div class="color-grid">
+          <label class="m-0 mb-2">Add colors (click color to delete it)</label>
+          <div class="color-grid mb-2">
             <input class="p-0 color-picker" (change)="addColorToInput($event, 'add')" type="color" value="#11cbdb">
             <!-- <input type="text" placeholder="#000000" [(ngModel)]="productColors"> -->
-            <p  class="p-0 m-0" *ngIf="this.productColors.length === 0">No colors yet</p>
+            <p  class="p-0 m-0 pt-2" *ngIf="this.productColors.length === 0">No colors yet</p>
             <div *ngIf="this.productColors.length !== 0" class="d-flex add-product-colors">
               <div (click)="this.deleteColor(item.id, 'add')" class="mb-1 mr-1" *ngFor="let item of this.productColors" [ngStyle]="{'background-color': item.color}"></div>
             </div>
           </div>
         </div>
         <div class="edit-field">
-          <label class="m-0">Add sizes</label>
-          <input type="text" placeholder="S, M" [(ngModel)]="productSizes">
+          <label class="m-0 mb-2">Add sizes</label>
+          <input class="mb-2" type="text" placeholder="S, M" [(ngModel)]="productSizes">
         </div>
-        <button mat-button class="submit-btn add-btn mt-3">Add product</button>
+        <button mat-button class="submit-btn add-btn pt-2 pb-2 mt-3">Add product</button>
       </div>
     </div>
   </div>

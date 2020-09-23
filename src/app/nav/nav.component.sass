@@ -20,9 +20,15 @@ mat-icon::ng-deep
     text-align: center
     color: $Base-color
 
+.logo
+    margin-top: 0.1em
+
+.mat-icon-button:focus, .logo:focus, .mat-badge:focus
+    outline: none
+
 .nav-btn ::ng-deep 
     line-height: 2vw
-    padding: 0 0.7em
+    padding: 0 1.5em 
     color: $Base-color
     font-weight: 400
     font-size: 1vw
@@ -34,7 +40,17 @@ mat-icon::ng-deep
     background-color: rgba(15, 14, 15, 0.3)
 
 :host
-    ::ng-deep
+    ::ng-deep 
+        .mat-icon-button
+            width: 3vw !important
+            margin: 0.2em
+        .nav-icon
+            height: 1.5vw !important
+            width: 1.5vw !important
+            margin: 0
         img
             width: 15px
             height: 15px 
+        .sidemenu-icon
+            font-size: 30px
+            

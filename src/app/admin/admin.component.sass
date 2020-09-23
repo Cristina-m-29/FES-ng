@@ -41,12 +41,17 @@
 .product-details
     font-weight: 400
 
-.product-name
-    font-size: 1.25vw
-
 .product-color
     width: 1.35vw
     height: 1.35vw
+    margin-right: 0.3em
+    border-radius: 50%
+
+.product-size
+    margin-right: 0.3em
+
+.product-name
+    font-size: 1.25vw
     
 .sizes, .colors
     display: grid
@@ -54,7 +59,7 @@
 
 .cancel-btn, .submit-btn
     border-radius: 0
-    margin: auto
+    // margin: auto
 
 // Edit
 .edit-product-container
@@ -89,13 +94,14 @@
 .edit-field, .color-grid
     > label
         color: #cfc9ba
-        line-height: 1vw
+        font-size: 1.2vw
+        line-height: 1.5vw
         margin: 0
     > input
         width: 100%
         box-sizing: border-box
         border-radius: 0
-        padding: 0.1em 0.5em
+        padding: 1em
         border: none
         border-bottom: solid 0.2em rgba(17,203,219,0.4)
         background-color: rgb(0, 0, 0, 0.5)
@@ -155,6 +161,8 @@ label
             > p
                 color: #cfc9ba
                 font-weight: 400
+            > input
+                height: 2.5vw
         .colorpick-eyedropper-input-trigger
             display: none
         .add-product-colors
@@ -163,3 +171,5 @@ label
                 height: 2.3vw
                 border-radius: 50%
                 margin-top: 0.2em
+        .color-piker
+            height: 3vw

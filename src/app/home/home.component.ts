@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
-import { getBrowser } from '../../getBrowser';
 
 export interface Tile {
   route: string;
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit {
   ];
   windowHeight: string;
   windowWidth: string;
-  isChrome = getBrowser();
 
   constructor(public authService: AuthService) { }
 

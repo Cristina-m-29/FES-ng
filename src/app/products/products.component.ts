@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-// import { BehaviorSubject } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -30,7 +29,7 @@ export class ProductsComponent implements OnInit{
 
   // paginator options
   length: number;
-  pageSize =  3;
+  itemsPerRow =  4;
   pageIndex: number;
   pageSizeOptions: number[] = [3, 4];
   pageEvent: PageEvent;
@@ -72,12 +71,12 @@ export class ProductsComponent implements OnInit{
     }
   }
 
-  changePageFormat(event?: PageEvent): any {
-    this.length = event.length;
-    this.pageSize = event.pageSize;
-    this.pageIndex = event.pageIndex;
-    (document.querySelector('.products-list') as HTMLElement).style.gridTemplateColumns = `repeat(${this.pageSize}, auto)`;
-  }
+  // changePageFormat(event?: PageEvent): any {
+  //   this.length = event.length;
+  //   this.itemsPerRow = event.pageSize;
+  //   this.pageIndex = event.pageIndex;
+  //   (document.querySelector('.products-list') as HTMLElement).style.gridTemplateColumns = `repeat(${this.itemsPerRow}, auto)`;
+  // }
 
   previousState(state: string): any{
     if (state === 'size'){

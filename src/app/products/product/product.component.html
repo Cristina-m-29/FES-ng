@@ -6,18 +6,18 @@
     <span class="ml-2 mr-2">  >  </span>
     <p class="ml-2 mr-2">PRODUCT NAME</p>
   </div>
-  <div class="product">
+  <div class="product mt-2">
     <img src="../../../assets/images/girl.jpg">
-    <div class="position-relative">
+    <div class="position-relative product-info">
       <div *ngIf="added === 'cart'" class="added text-center">Added to cart</div>
       <div *ngIf="added === 'favorites'" class="added text-center p-1">Added to favorites</div>
-      <div class="border-bottom">
-        <p class="pb-0 mb-1 product-name">PRODUCT NAME</p>
-        <p class="pt-0 mt-0 product-id">Product id 4490</p>
+      <div class="border-bottom"> 
+        <p class="pb-0 mb-3 product-name">PRODUCT NAME</p>
+        <p class="pt-0 mt-0 mb-4 product-id">Product id 4490</p>
       </div>
-      <p class="product-price pt-3 pb-3 m-0">97.99 RON</p>
-      <div class="border-top border-bottom pt-3 pb-3 m-0">
-        <div class="color-text d-flex">
+      <p class="product-price pt-4 pb-4 m-0">97.99 RON</p>
+      <div class="border-top border-bottom pt-4 pb-4 m-0">
+        <div class="color-text d-flex mb-3">
           <span class="mr-2">Color:</span>
           <span *ngIf="!alert || selectedColor !== 'not selected'">{{selectedColor}}</span>
           <span *ngIf="alert && selectedColor === 'not selected'" class="text-danger font-weight-bold">{{selectedColor}}</span>
@@ -30,8 +30,8 @@
           
         </div>
       </div>
-      <div class="pt-3 pb-3 m-0">
-        <div class="color-text d-flex">
+      <div class="pt-4 pb-4 m-0">
+        <div class="color-text d-flex mb-3">
           <span class="mr-2">Size:</span>
           <span *ngIf="!alert || selectedSize !== 'not selected'">{{selectedSize}}</span>
           <span *ngIf="alert && selectedSize === 'not selected'" class="text-danger font-weight-bold">{{selectedSize}}</span>
@@ -44,7 +44,7 @@
           
         </div>
       </div>
-      <button mat-button class="product-fav-btn mb-3" (click)="addToFavorites()">Add to favorites</button>
+      <button mat-button class="product-fav-btn mb-4" (click)="addToFavorites()">Add to favorites</button>
       <button mat-button class="product-cart-btn" (click)="addToCart()">Add to cart</button>
     </div>
   </div>
