@@ -1,16 +1,19 @@
 <div class="login">
   <div class="position-relative login-part">
-    <div class="overlay"></div>
+    <div class="overlay"></div> 
     <div class="log-text">
         <p class="title m-0 mb-2">Welcome back!</p>
-        <p class="subtitle m-0">To keep connected with us please <br> login with your personal info</p>
+        <p class="subtitle m-0">To keep connected with us <span class="br-text"> please login with your personal info</span></p>
         <button mat-button class="border border-white log-btn mt-4" [routerLink]="['/atara/login']">Log in</button>
       </div>
     <p class="logo p-0 m-0" [routerLink]="['']">Atara</p>
   </div>
   <div class="sign-form">
+    <p class="logo form-logo p-0 m-0" [routerLink]="['']">Atara</p>
     <div class="d-flex flex-column text-center form-text">
-      <p class="accent-text p-0 m-0 mb-4">Registration</p>
+      <p class="accent-text p-0 m-0 mb-4">Registration <span class="extra-text">or 
+        <span class="log-second-btn border" [routerLink]="['/atara/login']">Log in</span>
+      </span></p>
       <p class="power-text mb-4">Sign up to get more power.</p>
       <form [formGroup]="signUpForm" class="signUpForm pl-4 pr-4" (ngSubmit)="signUp()">
         <div class="form-input">
@@ -27,7 +30,7 @@
             <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
           </mat-form-field>
         </div>
-        <div class="form-input">
+        <div class="form-input  gender-input">
           <label>Gender</label>
           <mat-radio-group [formControl]="gender" required>
             <mat-radio-button color="primary" value="male">Male</mat-radio-button>

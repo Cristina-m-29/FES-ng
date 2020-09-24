@@ -1,7 +1,10 @@
 <div class="signup">
   <div class="sign-form pl-4 pr-4">
     <div class="d-flex flex-column text-center form-text">
-      <p class="accent-text">Login</p>
+      <p class="logo form-logo p-0 m-0" [routerLink]="['']">Atara</p>
+      <p class="accent-text">Login <span class="extra-text">or 
+        <span class="log-second-btn border" [routerLink]="['/atara/signup']">Sign up</span>
+      </span></p>
       <p class="power-text mb-4">Login into your account here.</p>
       <form [formGroup]="loginForm" class="signUpForm pl-1 pr-1" (ngSubmit)="logIn()">
         <div class="form-input">
@@ -33,7 +36,7 @@
     <p class="logo p-0 m-0 mt-3" [routerLink]="['']">Atara</p>
     <div class="log-text">
       <p class="title">Welcome friend!</p>
-      <p class="subtitle">Be the first to know about the latest <br> fashion news and get exclusive offers.</p>
+      <p class="subtitle">Be the first to know about the latest <span class="br-text">fashion news and get exclusive offers.</span></p>
       <button mat-button class="border border-white log-btn mt-2" [routerLink]="['/atara/signup']" type="button">Sign Up</button>
     </div>
   </div>

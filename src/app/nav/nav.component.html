@@ -3,14 +3,17 @@
     <div class="nav justify-content-left align-self-center">
       <mat-icon *ngIf="authService.navBtn" class="p-0 m-0 sidemenu-icon" (click)="changeMenuState()">reorder</mat-icon>
       <mat-icon *ngIf="!authService.navBtn" class="p-0 m-0 sidemenu-icon" (click)="changeMenuState()">clear</mat-icon>
-      <span class="logo ml-4" [routerLink]="['']">ATARA</span>
+      <span class="logo" [routerLink]="['']">ATARA</span>
     </div>
   
     <div class="nav justify-content-right align-self-center" *ngIf="!authService.loggedIn()">
-      <button mat-button [routerLink]="['atara/signup']" class="nav-btn border border-white">Sign up</button>
+      <button mat-button [routerLink]="['atara/login']" class="nav-btn border border-white">Log in</button>
     </div>
     
     <div class="nav justify-content-right user-btns d-flex align-self-center" *ngIf="authService.loggedIn()">
+      <button mat-icon-button aria-label="user" class="home-btn" [routerLink]="['']">
+        <img class="nav-icon" src="../../assets/icons/home.png">
+      </button>
       <button *ngIf="this.authService.isAdmin()" mat-icon-button aria-label="user" [routerLink]="['/atara/admin/personal-data']">
         <img class="nav-icon" src="../../assets/icons/user.png">
       </button>

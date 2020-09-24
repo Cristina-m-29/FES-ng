@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,7 @@ export class SignupComponent implements OnInit {
   ngOnInit(): any {
   }
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private authService: AuthService) {
     this.signUpForm = fb.group({
       gender: this.gender,
       name: this.name,
@@ -26,6 +27,9 @@ export class SignupComponent implements OnInit {
       birthday: this.birthday,
       password: this.password
     });
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
   }
 
   getEmailErrorMessage(): any {

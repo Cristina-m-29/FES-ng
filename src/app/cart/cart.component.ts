@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormControlName } from '@angular/forms';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -32,7 +33,7 @@ export class CartComponent implements OnInit {
   yearExp = new FormControl();
   securityCode = new FormControl();
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private authService: AuthService) {
     this.addNewAddressForm = fb.group({
       name: this.name,
       street: this.street,
@@ -47,6 +48,9 @@ export class CartComponent implements OnInit {
       expirationYear: this.yearExp,
       securityCode: this.securityCode
     });
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
   }
 
   ngOnInit(): any {

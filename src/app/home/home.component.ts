@@ -28,7 +28,11 @@ export class HomeComponent implements OnInit {
   windowHeight: string;
   windowWidth: string;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
+  }
 
   ngOnInit(): any {
     this.windowHeight = (window.innerHeight + 7).toString() + 'px';

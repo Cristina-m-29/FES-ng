@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +13,14 @@ export class LoginComponent implements OnInit {
   password = new FormControl();
   hide = true;
 
-  constructor(fb: FormBuilder) {
+  constructor(fb: FormBuilder, private authService: AuthService) {
     this.loginForm = fb.group({
       email: this.email,
       password: this.password
     });
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
   }
 
   ngOnInit(): any {

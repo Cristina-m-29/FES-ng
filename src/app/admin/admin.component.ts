@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -68,10 +69,13 @@ export class AdminComponent implements OnInit {
   addProdImg: any = '../../assets/images/girl.jpg';
   editProdImg: any =  '../../assets/images/girl.jpg';
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.page = window.location.pathname.split('/', 4)[3];
     this.nrUsers = this.users.length;
     this.nrOrders = this.orders.length;
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
   }
 
   ngOnInit(): any {

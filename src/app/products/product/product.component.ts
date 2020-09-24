@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_services/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -13,9 +14,14 @@ export class ProductComponent implements OnInit {
   alert: boolean;
   added: string;
 
-  constructor() { }
+  constructor(private authService: AuthService) {
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
+  }
 
   ngOnInit(): any {
+
   }
 
   addToFavorites(): any{

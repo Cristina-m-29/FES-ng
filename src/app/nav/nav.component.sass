@@ -14,27 +14,43 @@ $Base-color: #f5f5f5
     width: 20px
     height: 20px
 
+:host
+    .logo
+        margin-left: 2vw
+        @media screen and (max-width: 1000px)
+            margin-left: 3vw
+        @media screen and (max-width: 760px)
+            margin-left: 4vw
+        @media screen and (max-width: 600px)
+            margin-left: 5vw
+        @media screen and (max-width: 500px)
+            margin-left: 6vw
+        @media screen and (max-width: 400px)
+            display: none
+    .home-btn
+        display: none
+        @media screen and (max-width: 400px)
+            display: block
+
 mat-icon::ng-deep
-    width: 1.2vw
+    width: 2.8vh
     cursor: pointer
     text-align: center
     color: $Base-color
-
-.logo
-    margin-top: 0.1em
+    margin: 0 !important
 
 .mat-icon-button:focus, .logo:focus, .mat-badge:focus
     outline: none
 
 .nav-btn ::ng-deep 
-    line-height: 2vw
+    line-height: 4vh
     padding: 0 1.5em 
     color: $Base-color
     font-weight: 400
-    font-size: 1vw
+    font-size: 2.03vh
     outline: none
     box-shadow: 0
-    border-radius: 15
+    border-radius: 4px
 
 .nav-btn:hover
     background-color: rgba(15, 14, 15, 0.3)
@@ -42,15 +58,12 @@ mat-icon::ng-deep
 :host
     ::ng-deep 
         .mat-icon-button
-            width: 3vw !important
+            width: 6vh !important
             margin: 0.2em
         .nav-icon
-            height: 1.5vw !important
-            width: 1.5vw !important
+            height: 3vh !important
+            width: 3vh !important
             margin: 0
-        img
-            width: 15px
-            height: 15px 
+            padding: 0
         .sidemenu-icon
-            font-size: 30px
-            
+            font-size: 3.6vh    

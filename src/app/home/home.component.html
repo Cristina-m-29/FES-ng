@@ -10,8 +10,8 @@
   <div class="main-container">
       <div *ngIf="!this.authService.loggedIn()" class="main-landing">
           <img class="girl-img" src="../../assets/landing/girl-crop-1.png">
-          <div class="main-text">
-              <p class="title pb-2 text-left">Wear clothes <br> that <span class="accent-text">matter</span></p>
+          <div class="main-text second-text">
+              <p class="title pb-2 text-left second-title">Wear clothes <br> that <span class="accent-text">matter</span></p>
               <button mat-button class="main-btn" [routerLink]="['/atara/products']" [queryParams]="{category: 'women'}">Shop now</button>
           </div>
       </div>
@@ -21,7 +21,7 @@
               <img class="m-0 ml-5" src="../../assets/landing/women-neon.png"> 
           </div>
           <div class="main-text">
-              <p class="title pb-2 text-left">Wear clothes <br> that <span class="accent-text">matter</span></p>
+              <p class=" pb-2 text-left title">Wear clothes <br> that <span class="accent-text">matter</span></p>
               <button mat-button class="main-btn" [routerLink]="['/atara/products']" [queryParams]="{category: 'women'}">Shop now</button>
           </div>
       </div>

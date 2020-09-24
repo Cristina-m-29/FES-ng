@@ -4,6 +4,10 @@
   display: grid
   grid-template-columns: 60% 40% 
   grid-gap: 0
+  @media screen and ( max-width: 835px )
+    display: block
+  @media screen and ( max-width: 350px )
+    overflow: visible
 
 .signup-part
   width: 100%
@@ -16,10 +20,29 @@
   text-align: center
   display: grid
   grid-auto-rows: 20%, 1fr
+  @media screen and ( max-width: 835px )
+    display: none
+
+.log-second-btn
+  color: #BE42B7
+
+.power-text
+  margin-top: 0.5em !important
+  margin-bottom: 1em !important    
 
 .accent-text
   margin-bottom: 0.8em !important
   color: #09B0C8
+  @media screen and ( max-width: 400px )
+    margin-bottom: 1em
+
+.form-btns
+  width: 100% !important
+  display: flex
+
+.cancel-btn, .confirm-btn
+  @media screen and ( max-width: 300px )
+    padding: 0.1em 1em !important
 
 ::ng-deep .mat-error
   color: #09B0C8

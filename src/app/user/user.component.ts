@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -47,11 +48,14 @@ export class UserComponent implements OnInit {
   ];
   nrCards: number;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.page = window.location.pathname.split('/', 4)[3];
     this.nrOrders = this.orders.length;
     this.nrAddresses = this.addresses.length;
     this.nrCards = this.cards.length;
+    if (this.authService.menu.value === 'opened'){
+      this.authService.changeMenuState();
+    }
   }
 
   ngOnInit(): any {

@@ -3,6 +3,11 @@ $textColor: #f5f5f5
 .login
   display: grid
   grid-template-columns: 40% 60%
+  @media screen and ( max-width: 835px )
+    display: block
+  @media screen and ( max-width: 350px )
+    overflow: visible
+    
 
 .login-part
   width: 100%
@@ -14,6 +19,8 @@ $textColor: #f5f5f5
   text-align: center
   display: grid
   grid-auto-rows: 5% auto
+  @media screen and ( max-width: 835px )
+    display: none
 
 .overlay
   width: 100%
@@ -21,12 +28,24 @@ $textColor: #f5f5f5
   position: absolute
   z-index: 1
   background-color: rgb(102,92,104, 0.5)
+  @media screen and ( max-width: 835px )
+    display: none
 
 .logo
   display: inline-block
   outline: none
   z-index: 2
   margin-top: 1.5em !important
+
+.form-logo
+  position: absolute
+  top: 6%
+  left: 50%
+  transform: translate(-50%, -50%)
+  margin-top: 0 !important
+  display: none
+  @media screen and ( max-width: 835px )
+    display: block
 
 .log-text
   width: 100%
@@ -36,18 +55,41 @@ $textColor: #f5f5f5
   top: 40%
   left: 0
   tranfosrm: translate(-50%, -50%)
+  @media screen and ( max-width: 1035px )
+    padding: 0 1em
+  @media screen and ( max-width: 970px )
+    padding: 0 2em
+
+.br-text
+  display: block
+  @media screen and ( max-width: 1130px )
+    display: inline-block
 
 .title
-  line-height: 2.5vw
+  line-height: 5vh
   color: $textColor
   letter-spacing: 0.1em
-  font-size: 2.5vw
+  font-size: 5vh
 
 .subtitle
-  line-height: 1.7vw
+  line-height: 3.4vh
   color: $textColor
   letter-spacing: 0.1em
-  font-size: 1.3vw
+  font-size: 2.6vh
+
+.extra-text
+  color: $textColor
+  display: none
+  @media screen and ( max-width: 835px )
+    display: inline-block
+
+.log-second-btn
+  color: #09B0C8
+  padding: 0.3em
+  border-radius: 4px
+  &:hover
+    background-color: rgb(0, 0, 0, 0.3)
+    
 
 .sign-form
   width: 100%
@@ -56,18 +98,37 @@ $textColor: #f5f5f5
   place-items: center
 
 .form-text
-  width: 70%
+  width: 75%
+  @media screen and ( max-width: 1100px )
+    width: 80%
+  @media screen and ( max-width: 1040px )
+    width: 85%
+  @media screen and ( max-width: 570px )
+    padding-top: 1em
+  @media screen and ( max-width: 380px )
+    width: 90%
+    
 
 .accent-text
   letter-spacing: 0.1em
   color: #BE42B7
-  font-size: 1.9vw
+  font-size: 3.5vh
+  @media screen and ( max-width: 835px )
+    margin-bottom: 1.5em !important
+  @media screen and ( max-width: 570px )
+    margin-bottom: 1em !important
+    margin-top: 0.5em !important
+  @media screen and ( max-width: 400px )
+    font-size: 2.5vh
 
 .power-text
   color: #E5E5E5
-  font-size: 1.3vw
+  font-size: 2.6vh
   text-transform: uppercase
   letter-spacing: 0.1em
+  @media screen and ( max-width: 835px )
+    margin-bottom: 0.5em !important
+    display: none
 
 .signUpForm
    width: 100%
@@ -79,22 +140,36 @@ $textColor: #f5f5f5
   grid-template-columns: 35% 65%
   text-align: left
   margin-bottom: 0.3em
+  @media screen and ( max-width: 570px )
+    display: flex
+    flex-direction: column
+    margin-bottom: 0
+
+.gender-input
+  margin-bottom: 0.5em
+  @media screen and ( max-width: 570px )
+    display: grid
+    grid-template-columns: 35% 65%
+    margin-top: 0.2em
+    margin-bottom: 1em
 
 label
   font-weight: 'Poppins', sans-serif
-  font-size: 1.2vw
+  font-size: 2.5vh
   font-weight: 500
   color: #E5E5E5
   letter-spacing: 0.1em
   text-align: left
-  line-height: 4vw
+  line-height: 4vh
+  @media screen and ( max-width: 570px )
+    margin: 0 !important
 
 .input-ng
   padding: 0.5em 0
-  font-size: 1vw
+  font-size: 2vh
   font-weight: 500
   font-weight: 'Poppins', sans-serif
-  line-height: 2.5vw
+  line-height: 5vh
   color: #737373
 
 .pass-btn
@@ -103,8 +178,24 @@ label
   left: 91.5%
   transform: translate(-50%, -50%)
   > img
+    position: absolute
+    top: 50%
+    left: 95%
+    transform: translate(-50%, -50%)
     width: 2vw
     height: 2vw
+    @media screen and ( max-width: 930px )
+      width: 3vw
+      height: 3vw
+    @media screen and ( max-width: 600px )
+      width: 3.5vw
+      height: 3.5vw
+    @media screen and ( max-width: 500px )
+      width: 4.5vw
+      height: 4.5vw
+    @media screen and ( max-width: 400px )
+      width: 5vw
+      height: 5vw
 
 #date-toggle
   position: absolute
@@ -113,13 +204,35 @@ label
   transform: translate(-50%, -50%)
 
 #date-toggle-icon
+  outline: none
+  position: absolute
+  top: 65%
+  left: 55%
+  transform: translate(-50%, -50%)
   width: 2vw
   height: 2vw
-  vertical-align: middle
-  outline: none
+  @media screen and ( max-width: 930px )
+    width: 3vw
+    height: 3vw
+  @media screen and ( max-width: 600px )
+    width: 3.5vw
+    height: 3.5vw
+  @media screen and ( max-width: 500px )
+    width: 4.5vw
+    height: 4.5vw
+  @media screen and ( max-width: 400px )
+    width: 5vw
+    height: 5vw
 
 #pass-input
   padding-left: 0.4em
+
+::ng-deep
+  .mat-datepicker-content, .mat-calendar
+    @media screen and ( max-width: 316px )
+      width: 265px !important
+      height: 330px !important
+      
 
 /*Changes to angular material style*/  
 
@@ -136,8 +249,8 @@ label
     color: #737373
     font-family: 'Poppins', sans-serif
     font-weight: 500
-    font-size: 1vw
-    line-height: 2vw
+    font-size: 2vh
+    line-height: 4vh
     vertical-align: middle
   
   input.mat-input-element
@@ -157,7 +270,7 @@ label
 
   .mat-form-field
     font-family: 'Poppins', sans-serif
-    line-height: 1.5vw
+    line-height: 3.1vh
     align-items: middle
     position: relative
 
@@ -174,9 +287,9 @@ label
 :host
   ::ng-deep
     .mat-icon-button
-      line-height: 2.5vw
-      width: 2.5vw
-      height: 2.5vw
+      line-height: 4vh
+      width: 1.7vw
+      height: 4vh
       outline: none
 
 
@@ -185,7 +298,7 @@ label
 ::ng-deep 
   .mat-radio-button
     font-family: 'Poppins', sans-serif
-    font-size: 1.2vw
+    font-size: 2vh
     font-weight: 500
     color: #E5E5E5
 
@@ -195,20 +308,29 @@ label
   div.mat-radio-outer-circle
     height: 2vw
     width: 2vw
+    @media screen and ( max-width: 570px )
+      height: 3.5vw
+      width: 3.5vw
 
   div.mat-radio-inner-circle 
     height: 2vw
     width: 2vw
+    @media screen and ( max-width: 570px )
+      height: 3.5vw
+      width: 3.5vw
 
   div.mat-radio-container
     height: 2vw
     width: 2vw
+    @media screen and ( max-width: 570px )
+      height: 3.5vw
+      width: 3.5vw
 
 //Buttons
 .log-btn ::ng-deep 
   font-family: 'Poppins', sans-serif
-  line-height: 1.5vw
-  font-size: 1vw
+  line-height: 3vh
+  font-size: 2vh
   text-align: center
   padding: 0.4em 2em !important
   color: $textColor
@@ -225,8 +347,8 @@ label
   padding: 0.1em 2em !important
   font-family: 'Poppins', sans-serif
   font-weight: 400
-  font-size: 1vw
-  line-height: 2.5vw
+  font-size: 2vh
+  line-height: 5vh
   outline: none
 
 .confirm-btn::ng-deep
@@ -236,8 +358,8 @@ label
   padding: 0.1em 2em !important
   font-family: 'Poppins', sans-serif
   font-weight: 400
-  font-size: 1vw
-  line-height: 2.5vw
+  font-size: 2vh
+  line-height: 5vh
   outline: none
 
 //Datepicker
@@ -270,7 +392,7 @@ label
 
     .mat-calendar-next-button::after
       width: 1vw
-      height: 1vw
+      height: 2vh
       position: absolute
       padding: 0 !important
       margin: 0 !important
@@ -282,7 +404,7 @@ label
 
     .mat-calendar-previous-button::after
       width: 1vw
-      height: 1vw
+      height: 2vh
       position: absolute
       padding: 0 !important
       margin: 0 !important

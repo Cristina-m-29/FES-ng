@@ -6,7 +6,7 @@ $second-back-color: #f1f0f0
     width: 100vh
     height: 0
     position: fixed
-    background-color: rgba(15, 15, 15, 0.3)
+    background-color: rgba(15, 15, 15, 0.7)
     
 .side
     display: none
@@ -25,17 +25,16 @@ ul
 
 ul > li 
     margin: 0.2em 0
-    font-size: 28px
+    font-size: 3.5vh
     padding: 0.5em 0 !important
     align-items: center
     position: relative
     outline: none
     &:hover
-        background-color: rgba(15, 14, 14, 0.3)
+        background-color: rgba(15, 14, 14, 0.9)
 
 .categories-list
     width: 100%
-    // z-index: 3
     position: absolute
     top: 50%
     left: 50%
@@ -48,9 +47,19 @@ ul > li
     overflow: hidden
     display: grid
     grid-gap: 0.5em
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr))
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr))
     >p
         outline: none
-        font-size: 28px
+        font-size: 3.5vh
         margin: 0
         padding: 0.2em 0
+
+@media screen and ( max-width: 590px )
+    .sidemenu
+        width: 100% !important
+    .category-grid
+        padding: 0
+        grid-gap: 0.1em
+        grid-template-columns: repeat(auto-fit, minmax(95px, 1fr))
+
+    

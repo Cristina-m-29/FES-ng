@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class SidemenuComponent implements OnInit {
   menu: string;
   ok = 0;
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+  }
 
   ngOnInit(): any {
     this.authService.isOpen.subscribe(() => {
@@ -23,43 +24,48 @@ export class SidemenuComponent implements OnInit {
   }
 
   changeHeight(): any{
-    if (this.ok !== 0){
-      if (this.height === '0'){
-        (async () => {
-          this.authService.showBtnIndex = false;
+    if (window.innerWidth > 590){
+      if (this.ok !== 0){
+        if (this.height === '0'){
+          (async () => {
+            this.authService.showBtnIndex = false;
+            this.transition = 'height 0.5s ease-in-out';
+            this.height = '100vh';
+            await this.delay(500);
+            this.transition = 'width 0.5s ease-in-out';
+            this.display = 'block';
+            this.width = '50%';
+          })();
+        }
+        else{
+          (async () => {
+            this.menu = '';
+            this.transition = 'width 0.5s ease-in-out';
+            this.width = '100%';
+            await this.delay(500);
+            this.display = 'none';
+            this.transition = 'height 0.5s ease-in-out';
+            this.authService.showBtnIndex = true;
+            this.height = '0';
+          })();
+        }
+      }
+    }
+    else{
+      if (this.ok !== 0){
+        if (this.height === '0'){
           this.transition = 'height 0.5s ease-in-out';
           this.height = '100vh';
-          await this.delay(500);
-          this.transition = 'width 0.5s ease-in-out';
           this.display = 'block';
-          this.width = '50%';
-        })();
-      }
-      else{
-        (async () => {
-          this.menu = '';
-          this.width = '100%';
-          await this.delay(500);
+        }
+        else{
           this.display = 'none';
-          this.transition = 'height 0.5s ease-in-out';
-          this.authService.showBtnIndex = true;
+          this.transition = 'height 0.3s ease-in-out';
           this.height = '0';
-        })();
+        }
       }
     }
     this.ok = 1;
-  }
-
-  closeMenu(): any{
-    (async () => {
-      this.menu = '';
-      this.authService.showBtnIndex = true;
-      this.display = 'none';
-      this.transition = 'none';
-      this.width = '100%';
-      this.height = '0';
-      this.authService.navBtn = true;
-    })();
   }
 
   changeMenu(m: string): any{

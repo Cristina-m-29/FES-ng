@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -37,7 +38,7 @@ export class ProductsComponent implements OnInit{
   // products list
   products: string[] = ['1', '2', '3', '4', '5'];
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
     this.route.queryParams.subscribe( params => {
       this.category = params.category;
       if (typeof(params.type) !== 'undefined'){
@@ -48,6 +49,10 @@ export class ProductsComponent implements OnInit{
         this.typeSelected = '';
         this.hasType = false;
       }
+      if (this.authService.menu.value === 'opened'){
+        this.authService.changeMenuState();
+      }
+      console.log('change');
     });
    }
 
