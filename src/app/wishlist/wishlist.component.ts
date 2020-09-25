@@ -7,6 +7,7 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./wishlist.component.sass']
 })
 export class WishlistComponent implements OnInit {
+  products = [0, 1, 2, 3, 4, 5];
 
   constructor(private authService: AuthService) {
     if (this.authService.menu.value === 'opened'){
@@ -18,3 +19,4 @@ export class WishlistComponent implements OnInit {
   }
 
 }
+ 

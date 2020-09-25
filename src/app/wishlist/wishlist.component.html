@@ -1,24 +1,25 @@
-<div class="wishlist">
-  <div class="wishlist-product m-4 mb-5" *ngFor="let item of [1,2,3,4,7,7,5,7]">
+<div *ngIf="this.products.length > 0" class="wishlist">
+  <div class="wishlist-product m-4 mb-5" *ngFor="let item of products">
+    <p class="p-0 m-0 pt-2 wish-name border-top img-name text-center ">PRODUCT NAME</p>
     <div class="wish-border p-1 position-relative">
       <img src="../../assets/images/boy.jpg">
     </div>
     <div class="wish-info position-relative p-0 m-0 ml-3 d-flex flex-column"> 
-      <p class="p-0 m-0 mb-5 pb-1 wish-name">PRODUCT NAME</p>
+      <p class="p-0 m-0 mb-2 pb-1 wish-name">PRODUCT NAME</p>
       <div class="wishlist-details">
         <div class="wishlist-tags product-info d-flex flex-column">
           <span>Product id</span>
           <span>Price</span>
-          <span>Color</span>
           <span>Size</span>
+          <span>Color</span>
         </div>
         <div class="product-info d-flex flex-column">
           <span>299087</span>
-          <span>1 x 79.60 RON</span>
-          <div class="d-flex">
+          <span>1 x 79.60 <span class="hide">RON</span></span>
+          <span>M</span>
+          <div class="d-flex color-container">
             <div class="product-color" [ngStyle]="{'background-color': 'red'}"></div>
           </div>
-          <span>M</span>
         </div>
       </div>
       <div class="wish-btns align-content-end">
@@ -28,3 +29,4 @@
     </div>
   </div>
 </div>
+<div *ngIf="this.products.length === 0" class="no-products-text">No products in wishlist</div>

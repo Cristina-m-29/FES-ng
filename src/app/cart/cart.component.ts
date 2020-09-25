@@ -8,17 +8,28 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./cart.component.sass']
 })
 export class CartComponent implements OnInit {
+  products = [0, 1, 2, 3, 4, 5];
+
   addresses: string[][] = [
     [ '1', 'Pacurari', 'Iasi', 'Romania'],
     [ '2', 'Pacurari', 'Iasi', 'Romania'],
     [ '3', 'Pacurari', 'Iasi', 'Romania'],
   ];
+  cards: string[][] = [
+    [ '1', 'Master', 'RO96301084943883'],
+    [ '2', 'Visa', 'RO14073835635']
+  ];
   selectedAddress = '0';
   payMethods: string[] = ['cash', 'card'];
   cardTypes: string[] = ['Master', 'Visa'];
   selectedMethod = '';
+  selectedCard = '';
   cardType: string;
+  selectCardList = false;
   orderError = false;
+  hideProducts = false;
+  hideAddressForm = true;
+  hideCardForm = true;
 
   addNewAddressForm: FormGroup;
   addNewCardForm: FormGroup;
@@ -54,6 +65,18 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): any {
+  }
+
+  selectCard(method: string): any{
+    this.selectedMethod = method;
+    if (method === 'card'){
+      this.selectCardList = true;
+    }
+    if (method === 'none'){
+      this.selectedMethod = '';
+      this.selectedCard = '';
+      this.selectCardList = false;
+    }
   }
 
   addAddress(): any{
