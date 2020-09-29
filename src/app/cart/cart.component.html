@@ -43,7 +43,7 @@
 
   <!-- Place order -->
   <div class="cart-container pt-4 mb-4">
-    <div class="order" [ngClass]="{'order-padding': !hideCardForm || !hideAddressForm}">
+    <div class="order" [ngClass]="{'order-padding': !hideCardForm || !hideAddressForm, 'hide-order': !hideCardForm || !hideAddressForm}">
       <div class="d-flex flex-column justify-space-between pr-4 select-address">
         <p class="p-0 m-0 mb-4">SELECT ADDRESS</p>
         <div>
@@ -125,7 +125,7 @@
         </div>
       </div>
       <div class="address-form-group">
-        <div class="mr-4">
+        <div class="mr-4 country-input">
           <div class="form-input">
             <p class="m-0 p-0 form-label">Country</p>
             <mat-form-field appearance="fill" class="input-ng">
@@ -133,9 +133,8 @@
               <mat-error *ngIf="country.invalid">Field requiered</mat-error>
             </mat-form-field>
           </div>
-          <button mat-button (click)="hideAddressForm = true" class="cancel-btn p-1 text-center">Cancel</button>
         </div>
-        <div class="pl-4">
+        <div class="pl-4 postal-input">
           <div class="form-input">
             <p class="m-0 p-0 form-label">Postal code</p>
             <mat-form-field appearance="fill" class="input-ng">
@@ -143,12 +142,11 @@
               <mat-error *ngIf="postalCode.invalid">Field requiered</mat-error>
             </mat-form-field>
           </div>
-          <button mat-button class="address-btn p-1 text-center" type="submit">Add address</button>
         </div>
       </div>
       <div class="address-form-group">
-        <button mat-button (click)="hideAddressForm = true" class="cancel-btn p-1 text-center">Cancel</button>
-        <button mat-button class="address-btn p-1 text-center" type="submit">Add address</button>
+        <button mat-button (click)="hideAddressForm = true" class="cancel-btn p-1 mr-4 text-center">Cancel</button>
+        <button mat-button class="address-btn p-1 ml-4 text-center" type="submit">Add address</button>
       </div>
     </form>
   </div>
@@ -158,7 +156,7 @@
     <p class="p-0 m-0 mb-4">ADD NEW CARD</p>
     <form [formGroup]="addNewCardForm" class="address-form" (ngModelChange)="addCard()">
       <div class="address-form-group">
-        <div class="form-input-card mr-3 pb-4">
+        <div class="form-input-card card-input mr-3 pb-4">
           <div>Type of card</div>
           <div class="d-flex pt-1">
             <div class="radio-container mr-3 d-flex" *ngFor="let type of cardTypes" (click)="cardType = type">
@@ -170,7 +168,6 @@
             </div>
           </div>
         </div>
-        <span class="border-left pl-4 pb-4 text-center">Expiration date</span>
       </div>
       <div class="address-form-group">
         <div class="form-input-card mr-4">
@@ -181,34 +178,32 @@
           </mat-form-field>
         </div>
         <div class="form-input-card border-left pl-4">
-          <p class="m-0 p-0 form-label">Month</p>
+          <p class="m-0 p-0 form-label">Security code</p>
+            <mat-form-field appearance="fill" class="input-ng">
+              <input matInput [formControl]="securityCode" required>
+              <mat-error *ngIf="securityCode.invalid">Field requiered</mat-error>
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="address-form-group">
+        <div class="form-input-card mr-4 position-relative">
+          <p class="m-0 p-0 form-label">Expiration date: month</p>
           <mat-form-field appearance="fill" class="input-ng">
             <input matInput [formControl]="monthExp" required>
             <mat-error *ngIf="monthExp.invalid">Field requiered</mat-error>
           </mat-form-field>
         </div>
+        <div class="border-left form-input-card pl-4">
+          <p class="m-0 p-0 form-label">Expiration date: year</p>
+          <mat-form-field appearance="fill" class="input-ng">
+            <input matInput [formControl]="yearExp" required>
+            <mat-error *ngIf="yearExp.invalid">Field requiered</mat-error>
+          </mat-form-field> 
+        </div>  
       </div>
       <div class="address-form-group">
-        <div class="mr-4 position-relative">
-          <div class="form-input-card">
-            <p class="m-0 p-0 form-label">Security code</p>
-            <mat-form-field appearance="fill" class="input-ng">
-              <input matInput [formControl]="securityCode" required>
-              <mat-error *ngIf="securityCode.invalid">Field requiered</mat-error>
-            </mat-form-field>
-          </div>
-          <button mat-button class="cart-btn order-btn add-card-btn p-1 text-center" type="submit">Add card</button>
-        </div>
-        <div class="border-left pl-4">
-          <div class="form-input-card">
-            <p class="m-0 p-0 form-label">Year</p>
-            <mat-form-field appearance="fill" class="input-ng">
-              <input matInput [formControl]="yearExp" required>
-              <mat-error *ngIf="yearExp.invalid">Field requiered</mat-error>
-            </mat-form-field> 
-          </div> 
-          <button mat-button (click)="hideCardForm = true" class="cancel-btn p-1 text-center">Cancel</button>      
-        </div>
+        <button mat-button (click)="hideCardForm = true" class="cancel-btn p-1 mr-4 text-center">Cancel</button>
+        <button mat-button class="add-card-btn p-1 ml-4 text-center" type="submit">Add card</button>
       </div>
     </form>
   </div>

@@ -204,6 +204,14 @@ img
     letter-spacing: 0.1em
     @media screen and ( max-width: 950px )
         display: block
+
+.hide-order
+    @media screen and ( max-width: 950px )
+        display: none
+
+.select-address
+    @media screen and ( max-width: 950px )
+        padding-right: 0 !important
         
 .select-payment
     @media screen and ( max-width: 950px )
@@ -285,6 +293,7 @@ img
         background-color: rgb(203, 68, 169, 0.8)
 
 .order-btn
+    max-width: 100% !important
     position: absolute
     bottom: 0
     background-color: rgba(17,203,219,0.4)
@@ -301,6 +310,9 @@ img
         font-weight: 600
         font-size: 2vh
         letter-spacing: 0.1em
+    @media screen and ( max-width: 950px )
+        margin-top: 3.5em !important
+        
 
 .address-form-group, .address-btns
     display: grid
@@ -312,15 +324,24 @@ img
     grid-template-columns: 20% 80%
     @media screen and ( max-width: 950px )
         padding-left: 0 !important
-        margin-right: 4em !important
+        margin-right: 0 !important 
+    @media screen and ( max-width: 705px )
+        display: block
+        margin-right: 0 !important
+        > p
+            margin-bottom: 0.5em !important      
 
 .cancel-btn
-    max-width: 100% !important
     width: 100%
     background-color: rgb(0, 0, 0, 0.4)
     &:hover
         background-color: rgb(0, 0, 0, 0.6)
-
+    @media screen and ( max-width: 950px )
+        max-width: 100% !important
+        width: 100% !important
+        margin-right: 0 !important
+        margin-bottom: 1em
+        
 .address-btn
     margin: auto
     max-width: 100% !important
@@ -328,11 +349,43 @@ img
     background-color: rgb(203, 68, 169, 0.4)
     &:hover
         background-color: rgb(203, 68, 169, 0.8)
+    @media screen and ( max-width: 950px )
+        margin-left: 0 !important
 
 // Add new card to user
 .form-input-card
     display: grid
-    grid-template-columns: 25% 75%
+    grid-template-columns: 20% 80%
+    @media screen and ( max-width: 1200px )
+        padding-bottom: 0 !important
+        display: block
+        > p
+            margin-bottom: 0.5em !important
+        > div 
+            margin-bottom: 1em !important
+        > .input-ng
+            width: 100% !important
+    @media screen and ( max-width: 950px )
+        padding-left: 0 !important  
+        margin-right: 0 !important
+        border-left: none !important      
+
+.card-input
+    @media screen and ( max-width: 1200px )
+        display: grid
+    &:first-child
+        @media screen and ( max-width: 1065px )
+            grid-template-columns: 22% 78%
+        @media screen and ( max-width: 605px )
+            grid-template-columns: 25% 75%
+        @media screen and ( max-width: 550px )
+            display: block
+
+.exp-date
+    @media screen and ( max-width: 1200px )
+        padding-bottom: 1em !important
+    @media screen and ( max-width: 950px )
+        display: none        
 
 .address-form-group
     > span, div
@@ -340,10 +393,15 @@ img
         font-weight: 600
     @media screen and ( max-width: 950px )
         display: block
-        
-
+  
 .add-card-btn
     max-width: 100% !important
+    width: 100% !important
+    background-color: rgba(17,203,219,0.4)
+    &:hover
+        background-color: rgba(17,203,219,0.8)
+    @media screen and ( max-width: 950px )
+        margin-left: 0 !important        
 
 .address-form-group, .order
     ::ng-deep
@@ -370,10 +428,14 @@ img
             font-family: 'Poppins', sans-serif
             font-weight: 500
             letter-spacing: 0.1em
+            
 
         .mat-form-field
             line-height: 2.5vh
             align-items: middle
+            @media screen and ( max-width: 950px )
+                max-width: 100% !important
+                width: 100% !important                
 
         .mat-error, .mat-hint
             color: #11cbdb
@@ -397,6 +459,14 @@ img
             font-size: 2vh
             line-height: 2.5vh
             vertical-align: middle
+
+.country-input
+    @media screen and ( max-width: 950px )
+        margin-right: 0 !important
+
+.postal-input
+    @media screen and ( max-width: 950px )
+        padding-left: 0 !important
 
 .no-products-text
     font-size: 4vh
