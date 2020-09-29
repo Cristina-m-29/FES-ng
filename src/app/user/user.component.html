@@ -1,58 +1,59 @@
 <div class="user-container user position-relative">
   <!-- Side navigation for user -->
   <div class="side-nav border-right pt-2 pb-0">
-    <div class="d-flex justify-content-between border-bottom pb-3">
-      <p class="welcome-text mt-2 pl-2">Welcome!</p>
+    <div class="main-nav d-flex justify-content-between border-bottom pb-3">
+      <p class="welcome-text nav-text mt-2 pl-2">Welcome!</p>
       <p class="logout-btn mt-2 mr-3" (click)="logout()">{{'log out' | uppercase}}</p>
     </div>
-    <div class="d-flex flex-column mt-4">
-      <p class="border-bottom accent-text pb-4 welcome-text pl-2 m-0">My account</p>
+    <div class="user-options d-flex flex-column mt-4">
+      <p class="border-bottom accent-text pb-4 welcome-text nav-text pl-2 m-0">My account</p>
       <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/user/personal-data']">
         <div class="d-flex" *ngIf="this.page !== 'personal-data'">
-          <img src="../../assets/icons/user-light.png" alt="person icon">
+          <img class="side-img" src="../../assets/icons/user-light.png" alt="person icon">
           <p class="p-0 m-0 ml-2 user-side-text">Personal data</p>
         </div>
         <div class="d-flex" *ngIf="this.page === 'personal-data'">
-          <img src="../../assets/icons/user-blue.png" alt="person icon">
-          <p class="p-0 m-0 ml-2 user-side-text-color">Personal data</p>
+          <img class="side-img" src="../../assets/icons/user-blue.png" alt="person icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color user-side-text">Personal data</p>
         </div>
       </div>
       <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/user/orders']">
         <div class="d-flex" *ngIf="this.page !== 'orders'">
-          <img src="../../assets/icons/box-light.png" alt="order icon">
+          <img class="side-img" src="../../assets/icons/box-light.png" alt="order icon">
           <p class="p-0 m-0 ml-2 user-side-text">My orders</p>
         </div>
         <div class="d-flex" *ngIf="this.page === 'orders'">
-          <img src="../../assets/icons/box-blue.png" alt="order icon">
-          <p class="p-0 m-0 ml-2 user-side-text-color">My orders</p>
+          <img class="side-img" src="../../assets/icons/box-blue.png" alt="order icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color user-side-text">My orders</p>
         </div>
       </div>
       <div class="side-nav-option border-bottom p-2 pt-4 pb-4" [routerLink]="['/atara/user/addresses']">
         <div class="d-flex" *ngIf="this.page !== 'addresses'">
-          <img src="../../assets/icons/address-light.png" class="" alt="address icon">
+          <img class="side-img" src="../../assets/icons/address-light.png" alt="address icon">
           <p class="p-0 m-0 ml-2 user-side-text">My addresses</p>
         </div>
         <div class="d-flex" *ngIf="this.page === 'addresses'">
-          <img src="../../assets/icons/address-blue.png" alt="address icon">
-          <p class="p-0 m-0 ml-2 user-side-text-color">My addresses</p>
+          <img class="side-img" src="../../assets/icons/address-blue.png" alt="address icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color user-side-text">My addresses</p>
         </div>
       </div>
       <div class="side-nav-option p-2 pt-4 pb-4" [routerLink]="['/atara/user/payment']">
         <div class="d-flex" *ngIf="this.page !== 'payment'">
-          <img src="../../assets/icons/pay-light.png" alt="card icon">
+          <img class="side-img" src="../../assets/icons/pay-light.png" alt="card icon">
           <p class="p-0 m-0 ml-2 user-side-text">Payment information</p>
         </div>
         <div class="d-flex" *ngIf="this.page === 'payment'">
-          <img src="../../assets/icons/pay-blue.png" alt="card icon">
-          <p class="p-0 m-0 ml-2 user-side-text-color">Payment information</p>
+          <img class="side-img" src="../../assets/icons/pay-blue.png" alt="card icon">
+          <p class="p-0 m-0 ml-2 user-side-text-color user-side-text">Payment information</p>
         </div>
       </div>
     </div>
+    <p class="logout-btn logout-second-btn mt-2" (click)="logout()">{{'log out' | uppercase}}</p>
   </div>
   <!-- Main -->
   <div>
     <!-- Personal data -->
-    <div class="user-container" *ngIf="this.page === 'personal-data'">
+    <div class="user-rsp-container" *ngIf="this.page === 'personal-data'">
       <p class="welcome-text mb-4">My Personal Data</p>
       <!-- Personal data no email and password-->
       <div>
@@ -65,19 +66,25 @@
             </div>
           </button>
         </div>
-        <div *ngIf="!this.personalData" class="personal-data-main p-3 pl-4 border-left border-bottom border-right">
-          <div>
+        <div *ngIf="!this.personalData" class="p-3 pl-4 border-left border-bottom border-right">
+          <div class="personal-data-main">
             <p>First Name</p>
-            <p>Last Name</p>
-            <p>Account type</p>
-            <p>Gender</p>
-            <p>Bithday</p>
-          </div>
-          <div>
-            <p>Mititelu</p>
             <p>Cristina</p>
-            <p>User/Individual</p>
+          </div>
+          <div class="personal-data-main">
+            <p>Last Name</p>
+            <p>Mititelu</p>
+          </div>
+          <div class="personal-data-main">
+            <p>Account type</p>
+            <p>User</p>
+          </div>
+          <div class="personal-data-main">
+            <p>Gender</p>
             <p>Female</p>
+          </div>
+          <div class="personal-data-main">
+            <p>Bithday</p>
             <p>29/02/2000</p>
           </div>
         </div>
@@ -127,17 +134,17 @@
       <!-- Email and password -->
       <div class="mt-3 mb-3">
         <div class="d-flex justify-content-between user-header p-3 pr-4 pl-4">
-          <p class="user-text p-0 m-0">Email and password</p>
+          <p class="user-text p-0 m-0">Email <span class="password-text">and password</span></p>
           <div class="d-flex" *ngIf="!this.emailAndPassword">
             <button mat-button class="user-btn mr-2" *ngIf="hide" (click)="hide = !hide">
               <div class="d-flex">
-                <img class="small-img" src="../../assets/icons/pass-show.png">
+                <img class="small-img password-img" src="../../assets/icons/pass-show.png">
                 <p class="p-0 m-0 user-text">Show</p>
               </div>
             </button>
             <button mat-button class="user-btn mr-2" *ngIf="!hide" (click)="hide = !hide">
               <div class="d-flex">
-                <img class="small-img" src="../../assets/icons/pass-hide.png">
+                <img class="small-img password-img" src="../../assets/icons/pass-hide.png">
                 <p class="p-0 m-0 user-text">Hide</p>
               </div>
             </button>
@@ -149,7 +156,7 @@
             </button>
           </div>
         </div>
-        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-2 pl-4 border-left border-bottom border-right">
+        <div *ngIf="!this.emailAndPassword" class="personal-data-main d-flex flex-column p-2 pb-3 pl-4 border-left border-bottom border-right">
           <p>mititelucristina@mail.com</p>
           <div class="password d-flex justify-content-between">
             <p *ngIf="!hide" class="p-0 m-0">parola</p>
@@ -181,7 +188,7 @@
       </div>
     </div>
     <!-- Orders -->
-    <div class="user-container" *ngIf="this.page === 'orders'">
+    <div class="user-rsp-container" *ngIf="this.page === 'orders'">
       <p class="welcome-text pb-2 mb-0 mb-4">My orders</p>
       <p class="p-0 m-0" *ngIf="this.nrOrders === 0">No orders found</p>
       <div *ngIf="this.nrOrders !== 0">
@@ -226,7 +233,7 @@
       </div>
     </div>
     <!-- Addresses -->
-    <div class="user-container" *ngIf="this.page === 'addresses'">
+    <div class="user-rsp-container" *ngIf="this.page === 'addresses'">
       <p class="welcome-text pb-2 mb-0">My addresses</p>
       <p class="p-0 m-0" *ngIf="this.nrAddresses === 0">No addresses found</p>
       <div *ngIf="this.nrAddresses !== 0">
@@ -310,7 +317,7 @@
       </div>
     </div>
     <!-- Payment methods -->
-    <div class="user-container" *ngIf="this.page === 'payment'">
+    <div class="user-rsp-container" *ngIf="this.page === 'payment'">
       <p class="welcome-text pb-2 mb-0">My cards</p>
       <p class="p-0 m-0" *ngIf="this.nrCards === 0">No cards found</p>
         <div *ngIf="this.nrAddresses !== 0">

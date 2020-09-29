@@ -6,56 +6,174 @@ $textColor: #f5f5f5
     display: grid
     grid-template-columns: 25% 75%
     color: $textColor
-    font-size: 1vw
+    font-size: 2vh
+    @media screen and ( max-width: 825px )
+        display: block
 
 // Side navigation
+.side-nav
+    ::ng-deep
+        font-size: 2vh
+    @media screen and ( max-width: 825px )
+        display: flex
+        border-right: none !important
+        margin-bottom: 1em
+    @media screen and ( max-width: 700px )
+        padding-top: 0 !important
+    @media screen and ( max-width: 320px )
+        display: block                
+
+.main-nav
+    @media screen and ( max-width: 825px )
+        display: none
+        border-bottom: none !important
+        padding-bottom: 0 !important
+
 .welcome-text
-    font-size: 1.35vw
+    font-size: 2.5vh
     font-weight: 500
+    @media screen and ( max-width: 825px )
+        margin-bottom: 1em !important
+
+.nav-text
+    @media screen and ( max-width: 825px )
+        display: none
 
 .logout-btn
     cursor: pointer
     color: rgb(0, 0, 0, 0.8)
-    font-size: 1.5vw
+    font-size: 2.5vh
     font-weight: 500
     &:hover
-        font-size: 1.7vw
+        font-size: 2.7vh
         font-weight: 600
+    @media screen and ( max-width: 825px )
+        display: none
+
+.logout-second-btn
+    display: none
+    @media screen and ( max-width: 825px )
+        display: block
+        position: absolute
+        right: 0
+    @media screen and ( max-width: 700px )
+        margin-top: 0.8em !important 
+    @media screen and ( max-width: 320px )
+        position: relative
+        // width: 30%
+        margin: auto
+        text-align: center    
 
 img
     padding: 0
     width: 2vw
     height: 2vw
 
+.side-img
+    @media screen and ( max-width: 780px )
+        display: none
+    @media screen and ( max-width: 700px )
+        width: 1.6em
+        height: 1.6em
+        display: block
+    
+.user-options
+    @media screen and ( max-width: 825px )
+        flex-direction: row !important
+        margin-top: 0 !important
+    @media screen and ( max-width: 320px )
+        justify-content: space-between            
+
 .side-nav-option
     cursor: pointer
-
+    @media screen and ( max-width: 825px )
+        padding: 0.8em 1em 0.5em 1em !important
+        border-bottom: none !important
+        border-right: solid 0.1em #f5f5f5
+        &:first-of-type
+            padding-left: 0 !important
+    @media screen and ( max-width: 700px )
+        border: none !important  
+            
 .user-side-text, .user-text
-    line-height: 2vw 
+    line-height: 4vh
     color: #cfc9ba
+    @media screen and ( max-width: 970px )
+        line-height: 3vh
+    @media screen and ( max-width: 825px )
+        line-height: 2.5vh
+    @media screen and ( max-width: 780px )
+        margin-left: 0 !important
+
+.user-side-text
+    @media screen and ( max-width: 700px )
+        display: none                
 
 .user-side-text-color
-    font-size: 1.2vw
-    line-height: 2vw
     color: #09B0C8
+    @media screen and ( min-width: 1100px )
+        font-size: 2.2vh
+        line-height: 4.2vh
 
 // Personal data
 .user-container
     width: 90%
     margin: auto
-
+    @media screen and ( max-width: 825px )
+        width: 85%
+    @media screen and ( max-width: 780px )
+        width: 80%              
+    
+.user-rsp-container
+    width: 90%
+    margin: auto
+    @media screen and (min-width: 831px) and ( max-width: 1000px )
+        margin-left: 3em 
+    @media screen and ( max-width: 825px )
+        width: 100%    
+    
 .user-text
-    font-size: 1.25vw
+    font-size: 2.2vh
     color: #3C404C
 
 .small-img
-    padding: 0.3em
+    width: 1.4em
+    height: 1.4em
+    padding: 0
+    margin-top: 0.3em
+    margin-right: 0.3em
+    @media screen and ( max-width: 980px )
+        margin-top: 0.2em  
+        width: 1.25em
+        height: 1.25em  
+    @media screen and ( max-width: 825px )
+        margin-top: 0
+        width: 1.25em
+        height: 1.25em        
+
+.password-img
+    width: 1.6em
+    height: 1.6em
+    @media screen and ( max-width: 980px ) 
+        width: 1.45em
+        height: 1.45em 
+    @media screen and ( max-width: 970px )
+        margin-top: 0
+    @media screen and ( max-width: 824px )
+        padding: 0
+        margin-right: 0.3em
+        width: 1.35em
+        height: 1.35em     
+
+.password-text
+    @media screen and ( max-width: 455px )
+        display: none                  
 
 .user-header
     background-color: #09B0C8
     ::ng-deep    
         .matt-button, .mat-icon-button
-            line-height: 2vw
+            line-height: 2.5vh
             padding: 0
 
 .personal-data-main, .orders-main, .addresses-main, .cards-main
@@ -65,12 +183,21 @@ img
         padding: 0.5em 0
         margin: 0
         font-weight: 500
-        font-size: 1vw
+        font-size: 2vh
     > p
         padding: 0.5em 0 
         margin: 0
         font-weight: 500
 
+.personal-data-main
+    @media screen and ( max-width: 430px )
+        grid-template-columns: 45% 55%  
+    @media screen and ( max-width: 350px )
+        // padding: 0.3em 0.2em 0 0.2em !important
+        grid-template-columns: 50% 50%      
+    @media screen and ( max-width: 320px )
+        // padding: 0 !important
+        grid-template-columns: 55% 45%   
 
 :host
     ::ng-deep
@@ -78,22 +205,25 @@ img
             width: 90%
 
 .password
-    line-height: 2vw
-    font-size: 1vw
+    line-height: 2.5vh
+    font-size: 2vh
     color: #f5f5f5
     ::ng-deep    
         .matt-button, .mat-icon-button
-            line-height: 2vw
+            line-height: 2.5vh
             padding: 0
 
 .user-btn
-    line-height: 2vw
-    font-size: 1vw
+    line-height: 2.5vh
+    font-size: 2vh
     padding: 0
     min-width: 3vw
     > div
         width: 60%
         margin: auto
+    @media screen and (min-width: 825px) and ( max-width: 1202px )
+        > div
+            width: 100%
 
 // Perosnal data edit
 .edit-container
@@ -104,8 +234,8 @@ img
     ::ng-deep
         margin-right: 4em
         width: 90%
-        font-size: 1.25vw
-        line-height: 2vw
+        font-size: 2.2vh
+        line-height: 2.5vh
         padding: 0.2em 0 
 
 .cancel-btn
@@ -125,7 +255,7 @@ img
 .editForm
     ::ng-deep    
         .matt-button, .mat-icon-button
-            line-height: 2vw
+            line-height: 2.5vh
             padding: 0
 
 // Orders
@@ -136,7 +266,7 @@ img
     > .order-products 
         > p, > div > p
             font-weight: 500
-            font-size: 1vw
+            font-size: 2vh
 
 .orders-main
     grid-template-columns: 25% 75%
