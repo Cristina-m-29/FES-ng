@@ -1,12 +1,57 @@
 @import '../user/user.component.sass'
 
-.orders-grid
-    display: grid
-    grid-template-columns: 10% 10% 13% 62% 5%
+::ng-deep
+    .mat-focus-indicator
+        outline: none !important
+
+.side-nav
+    @media screen and ( max-width: 345px )
+        display: block
+        > div
+            padding-bottom: 0 !important
+            border-bottom: none !important
+
+.side-nav-option
+    outline: none
+
+.user-options
+    @media screen and ( max-width: 345px )
+        justify-content: space-between
+
+.logout-second-btn
+    @media screen and ( max-width: 345px )
+        position: relative
+        text-align: center
+
+.welcome-text
+    @media screen and ( max-width: 345px )
+        text-align: center
+
+.user-container
+    @media screen and ( max-width: 800px )
+        width: 90%
+    @media screen and ( max-width: 700px )
+        width: 85%
+
+.user-side-text
+    @media screen and ( min-width: 781px )
+        padding-left: 0.5em !important
+    @media screen and ( max-width: 780px )
+        padding-left: 0 !important
+
+.user-side-text-color
+    line-height: 2.5vh
+
+.addresses-main
+    @media screen and ( max-width: 430px )
+        display: block
+        margin-bottom: 0.3em
+        > p
+            padding: 0.1em 0
 
 .user-small-text
     font-weight: 600
-    font-size: 1vw
+    font-size: 2vh
     color: #3C404C
 
 // Products
@@ -26,7 +71,7 @@
     background-color: rgba(17,203,219,0.8)
     color: #000000
     letter-spacing: 0.05em
-    font-size: 1.1vw
+    font-size: 2vh
     font-weight: 700
 
 .product-body
@@ -41,17 +86,11 @@
 .product-details
     font-weight: 400
 
-.product-color
-    width: 1.35vw
-    height: 1.35vw
-    margin-right: 0.3em
-    border-radius: 50%
-
 .product-size
     margin-right: 0.3em
 
 .product-name
-    font-size: 1.25vw
+    font-size: 2.2vh
     
 .sizes, .colors
     display: grid
@@ -85,17 +124,17 @@
 
 .photo-btn
     background-color:  rgba(17,203,219,0.5)
-    font-size: 1vw
+    font-size: 2vh
 
 .cancel-edit-btn
     width: 95%
-    font-size: 1vw
+    font-size: 2vh
 
 .edit-field, .color-grid
     > label
         color: #cfc9ba
-        font-size: 1.2vw
-        line-height: 1.5vw
+        font-size: 2vh
+        line-height: 2.5vh
         margin: 0
     > input
         width: 100%
@@ -150,7 +189,7 @@ label
     width: 92%
 
 .image-selector
-    font-size: 1vw
+    font-size: 2vh
 
 :host
     ::ng-deep
@@ -162,7 +201,7 @@ label
                 color: #cfc9ba
                 font-weight: 400
             > input
-                height: 2.5vw
+                height: 5vh
         .colorpick-eyedropper-input-trigger
             display: none
         .add-product-colors
@@ -172,4 +211,4 @@ label
                 border-radius: 50%
                 margin-top: 0.2em
         .color-piker
-            height: 3vw
+            height: 10vh

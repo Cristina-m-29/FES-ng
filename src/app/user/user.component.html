@@ -193,7 +193,7 @@
       <p class="p-0 m-0" *ngIf="this.nrOrders === 0">No orders found</p>
       <div *ngIf="this.nrOrders !== 0">
         <div *ngFor="let order of orders" class="user-order mb-3">
-          <div class="d-flex justify-content-between user-header p-3 pr-4 pl-4">
+          <div class="user-header p-3 pr-4 pl-4">
             <p class="user-text p-0 m-0">Order nr. {{order.number}}</p>
           </div>
           <div class="p-3 pl-4 border-left border-bottom border-right">
