@@ -34,6 +34,8 @@ $textColor: #f5f5f5
     font-weight: 500
     @media screen and ( max-width: 825px )
         margin-bottom: 1em !important
+    @media screen and ( max-width: 320px )
+        text-align: center
 
 .nav-text
     @media screen and ( max-width: 825px )
@@ -188,15 +190,16 @@ img
         padding: 0.5em 0 
         margin: 0
         font-weight: 500
+        &:first-of-type
+            font-weight: 600
+            color: rgba(17,203,219,0.5)
 
 .personal-data-main
     @media screen and ( max-width: 430px )
         grid-template-columns: 45% 55%  
     @media screen and ( max-width: 350px )
-        // padding: 0.3em 0.2em 0 0.2em !important
         grid-template-columns: 50% 50%      
     @media screen and ( max-width: 320px )
-        // padding: 0 !important
         grid-template-columns: 55% 45%   
 
 :host
@@ -229,6 +232,35 @@ img
 .edit-container
     display: grid
     grid-template-columns: 50% 50%
+    @media screen and ( max-width: 550px )
+        display: block
+        > div
+            margin: 0 !important
+
+.input-ng
+    @media screen and ( max-width: 550px )
+        max-width: 100% !important
+
+.form-label
+    @media screen and ( max-width: 550px )
+        margin-bottom: 0.5em !important
+
+.gender-input
+    @media screen and ( max-width: 550px )
+        flex-direction: row !important
+        > div
+            margin-left: 1em
+            margin-top: 0.2em
+    @media screen and ( max-width: 350px )
+        flex-direction: column !important
+        > div
+            margin: 0
+            margin-bottom: 1em
+
+.gender-options
+    @media screen and ( max-width: 550px )
+        padding-top: 0.3em !important 
+        
 
 .submit-btn, .cancel-btn
     ::ng-deep
@@ -236,11 +268,14 @@ img
         width: 90%
         font-size: 2.2vh
         line-height: 2.5vh
-        padding: 0.2em 0 
+        padding: 0.5em 0 
 
 .cancel-btn
     ::ng-deep
         width: 85%
+        @media screen and ( max-width: 550px )
+            width: 90%
+            margin-bottom: 0.5em !important            
 
 .submit-btn
     background-color: rgba(17,203,219,0.5)
@@ -258,24 +293,150 @@ img
             line-height: 2.5vh
             padding: 0
 
+::ng-deep
+    .radio-container
+        font-size: 2vh
+    .radio-check, .checkmark
+        @media screen and ( max-width: 825px )
+            width: 2vw
+            height: 2vw
+        @media screen and ( max-width: 550px )
+            width: 3vw
+            height: 3vw
+        @media screen and ( max-width: 390px )
+            width: 3.5vw
+            height: 3.5vw
+        @media screen and ( max-width: 330px )
+            width: 4vw
+            height: 4vw
+    .inner-check
+        @media screen and ( max-width: 825px )
+            width: 1.5vw
+            height: 1.5vw
+        @media screen and ( max-width: 550px )
+            width: 1.8vw
+            height: 1.8vw
+        @media screen and ( max-width: 390px )
+            width: 2.2vw
+            height: 2.2vw
+        @media screen and ( max-width: 330px )
+            width: 2.5vw
+            height: 2.5vw
+
 // Orders
 .order-summary
     > div
         display: grid
         grid-template-columns: 35% 17% 18% 15% 15%
     > .order-products 
+        font-weight: 500
+        font-size: 2vh
         > p, > div > p
             font-weight: 500
             font-size: 2vh
+    @media screen and ( max-width: 510px )
+        display: block
+        > div
+            display: none
+        > .order-products
+            margin-top: 0.5em
+            display: grid
+            grid-template-columns: 50% 50%
+            border-bottom: solid 0.1em #f5f5f5
+    @media screen and ( max-width: 370px )
+        > .order-products
+            display: block
 
 .orders-main
     grid-template-columns: 25% 75%
+    @media screen and ( max-width: 725px )
+        grid-template-columns: 30% 70%
+    @media screen and ( max-width: 550px )
+        grid-template-columns: 40% 60%
+    @media screen and ( max-width: 415px )
+        grid-template-columns: 50% 50%
 
+.orders-main-summary
+    @media screen and ( max-width: 850px )
+        display: block
+        > p 
+            display: none
+    @media screen and ( max-width: 510px )
+        > p
+            display: block
+            border-bottom: solid 0.1em #f5f5f5
+
+.order-detail
+    > .order-detail-name
+        display: none
+    @media screen and ( max-width: 510px )
+        display: grid
+        grid-template-columns: 35% 65%
+        > .order-detail-name
+            display: block
+    @media screen and ( max-width: 425px )
+        grid-template-columns: 40% 60%
+    @media screen and ( max-width: 370px )
+         grid-template-columns: 50% 50%       
+        
 .product-color
     width: 1.1vw
     height: 1.1vw
     border-radius: 50%
-    margin-right: 0.3em
+    margin-right: 0.3em !important
+    @media screen and ( max-width: 1450px )
+        margin-top: 0.3em !important
+    @media screen and ( max-width: 1040px )
+        width: 1.3vw
+        height: 1.3vw
+    @media screen and ( max-width: 850px )
+        width: 1.5vw
+        height: 1.5vw
+    @media screen and ( max-width: 825px )
+        width: 1.7vw
+        height: 1.7vw
+    @media screen and ( max-width: 650px )
+        width: 1.9vw
+        height: 1.9vw
+    @media screen and ( max-width: 585px )
+        width: 2.1vw
+        height: 2.1vw
+    @media screen and ( max-width: 515px )
+        width: 2.3vw
+        height: 2.3vw
+    @media screen and ( max-width: 480px )
+        width: 2.7vw
+        height: 2.7vw
+    @media screen and ( max-width: 400px )
+        width: 3vw
+        height: 3vw
+    @media screen and ( max-width: 370px )
+        width: 3.5vw
+        height: 3.5vw
+    @media screen and ( max-width: 310px )
+        width: 3.8vw
+        height: 3.8vw
 
 .product-size
     margin-right: 0.3em
+
+// Addresses
+.addresses-container
+    @media screen and ( max-width: 350px )
+        > .addresses-main
+            display: block
+            margin-bottom: 0.3em
+            > p
+                padding: 0.1em 0
+
+// Cards
+.cards-container
+    @media screen and ( max-width: 415px )
+        padding: 1em !important
+    @media screen and ( max-width: 400px )
+        > .cards-main
+            display: block
+            margin-bottom: 0.3em
+            > p
+                padding: 0.1em 0
+        

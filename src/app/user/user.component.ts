@@ -23,7 +23,7 @@ export class UserComponent implements OnInit {
   password = 'parola';
 
   // Orders
-  orders: object[] = [
+  orders = [
     {number: 1, date: '01/07/2020', price: 70, products: [
       { name: 'Dress 1', size: 'XS', color: 'Blue', pieces: 1, price: 70}]
     },
@@ -35,14 +35,14 @@ export class UserComponent implements OnInit {
   nrOrders: number;
 
   // Addresses
-  addresses: object[] = [
+  addresses = [
     {number: 1, name: 'Cristina Mititelu', street: 'Pacurari', strNumber: 8, city: 'Iasi', country: 'Romania', postalCode: 700567, edit: 'false'},
     {number: 2, name: 'Madalina Plugariu', street: 'Recea', strNumber: 3, city: 'Iasi', country: 'Romania', postalCode: 700936, edit: 'false'}
   ];
   nrAddresses: number;
 
   // Cards
-  cards: object[] = [
+  cards = [
     {number: 1, type: 'visa', cardNumber: 59901902918819192, month: '01', year: 2025},
     {number: 2, type: 'master', cardNumber: 59901902918819192, month: '09', year: 2028}
   ];
