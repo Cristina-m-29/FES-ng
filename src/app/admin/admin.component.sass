@@ -59,9 +59,17 @@
     display: grid
     grid-template-columns: 33.33% 33.33% 33.33%
     grid-gap: 2em
+    @media screen and ( max-width: 1040px )
+        grid-template-columns: 50% 50%
+    @media screen and ( max-width: 825px )
+        grid-gap: 1em
+    @media screen and ( max-width: 495px )
+        display: block    
 
 .grid-product
     background-color: rgb(0, 0, 0, 0.4)
+    @media screen and ( max-width: 825px )
+       margin-bottom: 1em
 
 .body-grid
     display: grid
@@ -69,9 +77,9 @@
 
 .product-header
     background-color: rgba(17,203,219,0.8)
-    color: #000000
+    color: #3C404C
     letter-spacing: 0.05em
-    font-size: 2vh
+    font-size: 2.2vh
     font-weight: 700
 
 .product-body
@@ -82,6 +90,13 @@
             object-fit: cover
             width: 100%
             height: 100%
+
+.product-info
+    > p, > div
+        margin-bottom: 0.5em !important
+    @media screen and ( max-width: 495px )
+        >p, > div
+            margin-bottom: 1em !important 
 
 .product-details
     font-weight: 400
@@ -96,9 +111,47 @@
     display: grid
     grid-template-columns: repeat(5, 20%)
 
+.colors
+    > div
+        @media screen and ( max-width: 495px )
+            width: 1.5em
+            height: 1.5em
+        @media screen and ( max-width: 395px )
+            width: 1.2em
+            height: 1.2em
+        @media screen and ( max-width: 310px )
+            width: 1em
+            height: 1em
+
 .cancel-btn, .submit-btn
     border-radius: 0
-    // margin: auto
+    max-width: 100%
+    
+.delete-prod-btn
+    width: 90% 
+    @media screen and ( max-width: 550px )
+        width: 92%
+    @media screen and ( max-width: 495px )
+        width: 96%
+    @media screen and ( max-width: 430px )
+        width: 95%
+    @media screen and ( max-width: 340px )
+        width: 94%
+
+.edit-prod-btn
+    margin-right: 0
+    @media screen and ( max-width: 550px )
+        margin-left: 0.55em !important
+        width: 92%
+    @media screen and ( max-width: 495px )
+        width: 96% 
+    @media screen and ( max-width: 430px )
+        width: 95%
+    @media screen and ( max-width: 340px )
+        width: 94%
+
+.product-header-text
+    border-right: solid 0.15em #3C404C
 
 // Edit
 .edit-product-container
@@ -181,6 +234,27 @@ label
         width: 100%
         height: 100%
         object-fit: cover
+    @media screen and ( max-width: 825px )
+        margin-bottom: 3em !important 
+    @media screen and ( max-width: 580px )
+        display: block
+
+.add-product-img
+    @media screen and ( max-width: 580px )
+        display: none
+
+.add-product
+    @media screen and ( max-width: 580px )
+        margin-left: 0 !important
+
+.add-product-text
+    font-size: 2.5vh
+    font-weight: 500
+    display: none
+    @media screen and ( max-width: 580px )
+        display: block
+    @media screen and ( max-width: 345px )
+        text-align: center
 
 .add-btn
     width: 100%

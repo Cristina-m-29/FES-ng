@@ -41,6 +41,22 @@ export class AdminComponent implements OnInit {
   // Products
   products = [
     {
+      id: 10, category: 'women', type: 't-shirts', name: 'Long t-shirt name', price: 50,
+      hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}, {id: 4, size: 'L'}, {id: 5, size: 'XL'}]
+    },
+    {
+      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
+    },
+    {
+      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
+    },
+    {
+      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
+    },
+    {
       id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
     }

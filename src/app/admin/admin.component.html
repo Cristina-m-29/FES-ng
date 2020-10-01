@@ -349,15 +349,13 @@
       <div class="welcome-text">Store products</div>
       <div class="products-grid mt-3">
         <div *ngFor="let prod of products" class="position-relative grid-product pb-1 border">
-          <div class="product-header d-flex p-1 pl-2">
-            <p class="m-0 p-0 mr-2">{{prod.category | uppercase}}</p>
-            <p class="m-0 p-0 mr-2"> > </p>
-            <p class="m-0 p-0 mr-2">{{prod.type | uppercase}}</p>  
-            <p class="m-0 p-0 mr-2"> > </p> 
+          <div class="product-header d-flex p-2">
+            <p class="m-0 p-0 pr-2 mr-2 product-header-text">{{prod.category | uppercase}}</p>
+            <p class="m-0 p-0 pr-2 mr-2 product-header-text">{{prod.type | uppercase}}</p>  
             <p class="m-0 p-0">{{prod.id}}</p>
           </div>
           <div class="body-grid">
-            <div class="product-body">
+            <div class="product-body p-1">
               <div>
                 <img class="product-img p-1" src="../../assets/images/girl.jpg">
               </div>
@@ -372,9 +370,9 @@
                 </div>
               </div>
             </div>
-            <div class="edit-container">
-              <button mat-button class="cancel-btn" [disabled]="productEditId !== -1">Delete</button>
-              <button mat-button class="submit-btn" [disabled]="productEditId !== -1" (click)="openEditWindow(prod.id)">Edit</button>
+            <div class="edit-container mb-1">
+              <button mat-button class="ml-2 mr-1 cancel-btn delete-prod-btn" [disabled]="productEditId !== -1">Delete</button>
+              <button mat-button class="ml-1 submit-btn edit-prod-btn" [disabled]="productEditId !== -1" (click)="openEditWindow(prod.id)">Edit</button>
             </div>
           </div>
         </div>
@@ -382,7 +380,8 @@
     </div>
     <!-- Add product -->
     <div class="user-rsp-container add-grid mt-2" *ngIf="this.page === 'add-product'">
-      <img class="mr-2" src="{{this.addProdImg}}">
+      <p class="p-0 m-0 mb-3 add-product-text">Add product</p>
+      <img class="mr-2 add-product-img" src="{{this.addProdImg}}">
       <div class="d-flex flex-column ml-2 add-product">
         <input type="file" class="cancel-btn add-btn m-0 p-0 mb-2 image-selector" (change)="this.photoSelected($event, 'add')">
         <div class="edit-field">
