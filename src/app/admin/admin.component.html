@@ -1,7 +1,7 @@
 <div class="user-container user position-relative">
   <!-- Side navigation for admin -->
   <div class="side-nav border-right pt-2 pb-0">
-    <div class="d-flex justify-content-between border-bottom pb-3">
+    <div class=" d-flex justify-content-between side-nav-header border-bottom pb-3">
       <p class="welcome-text nav-text mt-2 pl-2">Welcome!</p>
       <p class="logout-btn mt-2 mr-3" (click)="logout()">{{'log out' | uppercase}}</p>
     </div>
@@ -63,50 +63,48 @@
   <div>
     <!-- Edit product window -->
     <div *ngIf="productEditId !== -1" class="edit-product-container p-2 pt-0">
-      <div class="d-flex pt-0 mt-0 border-bottom mb-2">
-        <p class="m-0 p-0 mr-2 ml-1">{{this.products[productEditId].category | uppercase}}</p>
-        <p class="m-0 p-0 mr-2"> > </p>
-        <p class="m-0 p-0 mr-2">{{this.products[productEditId].type | uppercase}}</p>  
-        <p class="m-0 p-0 mr-2"> > </p> 
+      <div class="d-flex pt-0 mt-0 border-bottom pb-2 mb-3 mt-1">
+        <p class="m-0 p-0 pr-3 mr-3 ml-1 border-right">{{this.products[productEditId].category | uppercase}}</p>
+        <p class="m-0 p-0 pr-3 mr-3 border-right">{{this.products[productEditId].type | uppercase}}</p>  
         <p class="m-0 p-0">{{this.products[productEditId].id}}</p>
       </div>
-      <div class="edit-grid">
+      <div class="edit-grid mb-2">
         <img src="{{this.editProdImg}}">
         <div class="d-flex flex-column">
           <input type="file" class="cancel-btn edit-photo-btn m-0 ml-1 p-0 image-selector" (change)="this.photoSelected($event, 'edit')">
-          <div class="edit-field ml-1 mr-1">
+          <div class="edit-field edit-prod-field name-field ml-1 mr-1">
             <label class="m-0 p-0">Product name</label>
             <input type = "text" name="productName" [(ngModel)]="this.beforeProduct.name">
           </div>
-          <div class="edit-field ml-1 mr-1">
+          <div class="edit-field edit-prod-field price-field ml-1 mr-1">
             <label class="m-0 p-0">Price</label>
             <input type = "text" name="productPrice" [(ngModel)]="this.beforeProduct.price">
           </div>
         </div>
       </div>
-      <div class="edit-grid border-bottom pb-1 mb-2">
-        <div class="mr-1 mb-1">
-          <div class="edit-field mb-1">
+      <div class="edit-grid border-bottom pb-2 mb-3 pl-2">
+        <div class="mr-3 mb-1">
+          <div class="edit-field edit-prod-field mb-1">
             <label class="m-0 p-0">Manage sizes</label>
             <input type = "search" name="productSize" placeholder="Add sizes here" [(ngModel)]="addSize">
           </div>
-          <div class="edit-sizes">
+          <div class="edit-sizes ml-1">
             <div class="border-rounded product-color text-center" *ngFor="let size of this.beforeProduct.sizes" (click)="deleteSize(size.id)">{{size.size}}</div> 
           </div>
         </div>
-        <div class="ml-1 mb-1">
-          <div class="edit-field mb-1 mr-1">
+        <div class="ml-0 mb-1">
+          <div class="edit-field edit-prod-field colors-field mb-1 mr-1">
             <label class="m-0 p-0">Manage colors</label>
             <input type = "text" name="productColor" placeholder="Add colors here" [(ngModel)]="addColor">
           </div>
-          <div class="edit-colors">
+          <div class="edit-colors ml-1">
             <div class="rounded-circle product-color mt-1 text-center" *ngFor="let color of this.beforeProduct.hex_colors" [ngStyle]="{'background-color': color.color}"  (click)="deleteColor(color.id)"></div>
           </div>
         </div>
       </div>
-      <div class="edit-container">
+      <div class="edit-container ml-2">
         <button mat-button class="cancel-btn cancel-edit-btn" (click)="productEditId = -1" (click)="cancelEdit()">Cancel</button>
-        <button mat-button class="submit-btn photo-btn" (click)="editProduct(this.products[productEditId].id)">Save</button>
+        <button mat-button class="submit-btn submit-edit-btn photo-btn" (click)="editProduct(this.products[productEditId].id)">Save</button>
       </div>
     </div>
     <!-- Personal data -->

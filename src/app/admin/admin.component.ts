@@ -45,19 +45,19 @@ export class AdminComponent implements OnInit {
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}, {id: 4, size: 'L'}, {id: 5, size: 'XL'}]
     },
     {
-      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      id: 11, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
     },
     {
-      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      id: 12, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
     },
     {
-      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      id: 13, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
     },
     {
-      id: 10, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
+      id: 14, category: 'women', type: 't-shirts', name: 'T-shirt 1', price: 50,
       hex_colors: [{id: 1, color: '#000000'}, {id: 2, color: '#b3b3b3'}, {id: 3, color: 'red'}, {id: 4, color: 'green'}, {id: 5, color: 'yellow'}], sizes: [{id: 1, size: 'XS'}, {id: 2, size: 'S'}, {id: 3, size: 'M'}]
     }
   ];
@@ -180,6 +180,7 @@ export class AdminComponent implements OnInit {
   }
 
   editProduct(id: number): any{
+    console.log(Window.arguments);
     if (this.addSize !== ''){
       const sizes = this.addSize.split(',');
       // tslint:disable-next-line: prefer-for-of
