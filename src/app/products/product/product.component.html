@@ -1,8 +1,10 @@
-<div class="main-container full-over">
+<div class="main-container full-over product-view">
   <div class="product-header d-flex p-0">
-    <p class="mr-2">CATEGORY</p>
-    <span class="ml-2 mr-2">  >  </span>
-    <p class="ml-2 mr-2">TYPE</p>
+    <div class="d-flex">
+      <p class="mr-2 product-cat">CATEGORY</p>
+      <span class="ml-2 mr-2">  >  </span>
+      <p class="ml-2 mr-2">TYPE</p>
+    </div>
     <span class="ml-2 mr-2">  >  </span>
     <p class="ml-2 mr-2">PRODUCT NAME</p>
   </div>
@@ -27,7 +29,6 @@
             <div *ngIf="selectedColor !== color" class="product-color rounded-circle"  [ngStyle]="{'background-color': color}" (click)="selectedColor = color"></div>
             <div *ngIf="selectedColor === color" class="product-color product-color-selected rounded-circle"  [ngStyle]="{'background-color': color}"></div>
           </div>
-          
         </div>
       </div>
       <div class="pt-4 pb-4 m-0">
@@ -41,7 +42,6 @@
             <div *ngIf="selectedSize !== size" class="product-size" (click)="selectedSize = size">{{size}}</div>
             <div *ngIf="selectedSize === size" class="product-size product-size-selected">{{size}}</div>
           </div>
-          
         </div>
       </div>
       <button mat-button class="product-fav-btn mb-4" (click)="addToFavorites()">Add to favorites</button>
