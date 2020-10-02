@@ -4,7 +4,7 @@ import { AuthService } from 'src/app/_services/auth.service';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.sass']
 })
 export class ProductComponent implements OnInit {
   colors: string[] = ['#000000', '#F1C40F', '#922B21', '#283747'];
@@ -31,8 +31,8 @@ export class ProductComponent implements OnInit {
     else{
       (async () => {
         this.added = 'favorites';
-        await this.delay(1500);
-        this.added = '';
+        // await this.delay(1500);
+        // this.added = '';
       })();
     }
   }

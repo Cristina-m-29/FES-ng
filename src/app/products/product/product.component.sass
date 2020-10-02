@@ -1,0 +1,108 @@
+$textColor: #f5f5f5 
+
+.product-view
+    @media screen and ( max-width: 500px )
+        width: 80%
+        height: auto
+
+.product-header  
+    margin-top: 10vh
+    margin-left: 3vw 
+    font-family: 'Poppins',sans-serif 
+    font-size: 2vh
+    line-height: 2.5vh 
+    font-weight: 500 
+    color: $textColor 
+    @media screen and ( max-width: 500px )
+        margin-left: 0 !important
+    @media screen and ( max-width: 410px )
+        display: block !important
+        > p, > span
+            display: none
+
+.product-cat
+    @media screen and ( max-width: 500px )
+        margin-left: 0 !important
+
+.product 
+    font-family: 'Poppins',sans-serif 
+    font-size: 2.1vh
+    font-weight: 400 
+    color: $textColor 
+    margin-left: 3vw 
+    height: 80vh 
+    display: grid 
+    grid-template-columns: 50% 50% 
+    @media screen and ( max-width: 500px )
+        display: block
+        height: auto
+        margin: 0 !important
+        margin-bottom: 5vh !important
+
+.product > img  
+    width: 85% 
+    height: 100% 
+    object-fit: cover 
+    @media screen and ( max-width: 910px )
+        height: 90%
+    @media screen and ( max-width: 500px )
+        width: 100%
+
+.product-info 
+    padding-top: 2em 
+ 
+.product-name, .product-price 
+    font-weight: 600 
+    font-size: 2.3vh
+    line-height: 2.5vh
+    letter-spacing: 0.1em 
+
+.product-id, .color-text, .sizes-text 
+    font-weight: 400 
+    font-size: 2vh
+ 
+.product-color, .product-size 
+    width: 2em
+    height: 2em
+    cursor: pointer 
+    @media screen and ( max-width: 1040px )
+        width: 1.5em
+        height: 1.5em
+ 
+.product-color:hover, .product-color-selected 
+    border: solid 0.1em #be42b7  
+ 
+.product-size:hover, .product-size-selected 
+    color: #be42b7 
+
+button 
+    width: 100%
+    font-weight: 500 
+    font-size: 2vh 
+    line-height: 2.5vh 
+    padding: 0.7em !important
+
+.product-fav-btn 
+    background-color: rgb(0, 0, 0, 0.25)
+    @media screen and ( max-width: 500px )
+        margin-bottom: 1em !important
+
+.product-fav-btn:hover 
+    background-color: rgb(0, 0, 0, 0.5) 
+ 
+.product-cart-btn 
+    background-color: rgba(190,66,183,0.3) 
+
+.product-cart-btn:hover 
+    background-color: rgba(190,66,183,0.5) 
+ 
+.added 
+    position: absolute 
+    top: 0 
+    right: 0 
+    padding: 0.25em 
+    font-size: 2vh
+    background-color: rgba(190,66,183,0.5) 
+    @media screen and ( max-width: 500px )
+        background-color: rgba(190,66,183, 0.85) 
+        top: 5%
